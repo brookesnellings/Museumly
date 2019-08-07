@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import Favorites from './Favorites';
 import Artworks from './Artworks';
+import axios from 'axios';
 
 class Header extends React.Component {
   constructor(props) {
