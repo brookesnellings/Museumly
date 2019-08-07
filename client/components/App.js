@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Artworks from './Artworks';
+import Favorites from './Favorites';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
       <div>
         <Header />
         <Artworks />
+        <Favorites />
       </div>
     );
   }
