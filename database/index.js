@@ -19,7 +19,16 @@ const retrieveCollections = () => {};
 const retrieveFavorites = () => {};
 
 const addFavorite = favorite => {
-  connection.query(`INSERT INTO favorites (artwork_id) VALUES (${favorite.artwork_id})`);
+  connection.query(
+    `INSERT INTO favorites (artwork_id) VALUES (${favorite.artwork_id})`,
+    (err, results) => {
+      if (err) {
+        console.log('Error adding favorite :', err);
+      } else {
+        console.log('Favorite added!', results);
+      }
+    }
+  );
 };
 
 module.exports = { retrieveCollections, retrieveFavorites, addFavorite };
