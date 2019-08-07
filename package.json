@@ -1,7 +1,7 @@
 {
-  "name": "project-template",
+  "name": "mvp",
   "version": "1.0.0",
-  "description": "A React/Babel/Webpack/Express template for personal projects",
+  "description": "Museumly",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -43,6 +43,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/brookesnellings/project-template"
+    "url": "https://github.com/brookesnellings/Museumly"
   }
 }
