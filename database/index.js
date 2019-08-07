@@ -16,14 +16,23 @@ connection.connect(err => {
 
 const retrieveCollections = () => {};
 
-const retrieveFavorites = () => {};
+const retrieveFavorites = () => {
+  connection.query(`SELECT * FROM favorites;`, (error, results) => {
+    if (error) {
+      console.log('Error retrieving Favorites: ', error);
+    } else {
+      console.log('Favorites retrieved!', results);
+      callback(results);
+    }
+  });
+};
 
 const addFavorite = favorite => {
   connection.query(
     `INSERT INTO favorites (artwork_id) VALUES (${favorite.artwork_id})`,
-    (err, results) => {
+    (error, results) => {
       if (err) {
-        console.log('Error adding favorite :', err);
+        console.log('Error adding favorite :', error);
       } else {
         console.log('Favorite added!', results);
       }
