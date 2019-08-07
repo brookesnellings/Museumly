@@ -1,0 +1,48 @@
+{
+  "name": "project-template",
+  "version": "1.0.0",
+  "description": "A React/Babel/Webpack/Express template for personal projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "server-dev": "nodemon server",
+    "webpack-dev": "webpack --mode=development --watch",
+    "webpack-build": "webpack --mode=production"
+  },
+  "author": "Brooke Snellings",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.14.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brookesnellings/project-template"
+  }
+}
