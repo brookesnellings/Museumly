@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navbar, Form, Button } from 'react-bootstrap';
 
 class Header extends React.Component {
   constructor(props) {
@@ -7,7 +8,15 @@ class Header extends React.Component {
   }
 
   render() {
-    return <h1>Museumly Browse Search Favorites Register/Login</h1>;
+    return (
+      <div>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="#home">Museumly</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
+        </Navbar>
+      </div>
+    );
   }
 }
 
