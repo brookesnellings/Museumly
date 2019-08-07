@@ -8,10 +8,14 @@ class Favorites extends React.Component {
 
   render() {
     return (
-      <p>
-        I will conditionally render these favorited artworks when Favorites is clicked on in Header
-        component
-      </p>
+      <div>
+        {this.props.showFavorites && (
+          <p>
+            I will conditionally render these favorited artworks when Favorites is clicked on in
+            Header component
+          </p>
+        )}
+      </div>
     );
   }
 }

@@ -1,10 +1,13 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import Favorites from './Favorites';
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showFavorites: true
+    };
   }
 
   render() {
@@ -31,6 +34,7 @@ class Header extends React.Component {
             </Form>
           </Navbar.Collapse>
         </Navbar>
+        <Favorites showFavorites={this.state.showFavorites} />
       </div>
     );
   }
