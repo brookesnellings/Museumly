@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import Favorites from './Favorites';
+import Artworks from './Artworks';
 
 class Header extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class Header extends React.Component {
             </Form>
           </Navbar.Collapse>
         </Navbar>
+        <Artworks showArtworks={!this.state.showFavorites} />
         <Favorites showFavorites={this.state.showFavorites} />
       </div>
     );

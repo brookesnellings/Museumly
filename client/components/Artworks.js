@@ -7,7 +7,7 @@ class Artworks extends React.Component {
   }
 
   render() {
-    return <div> artwork images will go here</div>;
+    return <div> {this.props.showArtworks && <p>artwork images will go here</p>}</div>;
   }
 }
 
