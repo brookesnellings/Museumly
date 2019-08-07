@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from './Header.js';
+import Header from './Header';
+import Artworks from './Artworks';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
+        <Artworks />
       </div>
     );
   }
