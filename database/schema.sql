@@ -9,3 +9,7 @@ CREATE TABLE artworks (
   title VARCHAR(255),
   image VARCHAR(255)
 );
+
+CREATE TABLE favorites (
+  artwork_id BIGINT PRIMARY KEY
+);

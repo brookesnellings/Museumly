@@ -13,3 +13,13 @@ connection.connect(err => {
     console.log('db connected!');
   }
 });
+
+const retrieveCollections = () => {};
+
+const retrieveFavorites = () => {};
+
+const addFavorite = favorite => {
+  connection.query(`INSERT INTO favorites (artwork_id) VALUES (${favorite.artwork_id})`);
+};
+
+module.exports = { retrieveCollections, retrieveFavorites, addFavorite };
