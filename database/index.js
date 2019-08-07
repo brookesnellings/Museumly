@@ -14,7 +14,16 @@ connection.connect(err => {
   }
 });
 
-const retrieveCollections = () => {};
+const retrieveCollections = () => {
+  connection.query(`SELECT * FROM artworks;`, (error, results) => {
+    if (error) {
+      console.log('Error retrieving Collections: ', error);
+    } else {
+      console.log('Collections retrieved!', results);
+      callback(results);
+    }
+  });
+};
 
 const retrieveFavorites = () => {
   connection.query(`SELECT * FROM favorites;`, (error, results) => {
