@@ -36,7 +36,7 @@ const filterByArtist = artist => {
   });
 };
 
-const retrieveFavorites = () => {
+const retrieveFavorites = callback => {
   connection.query(`SELECT * FROM favorites;`, (error, results) => {
     if (error) {
       console.log('Error retrieving Favorites: ', error);
