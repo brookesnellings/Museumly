@@ -7,7 +7,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showFavorites: true
+      showFavorites: false
     };
   }
 
@@ -20,7 +20,14 @@ class Header extends React.Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="#collections">Collections</Nav.Link>
-              <Nav.Link href="#favorites">Favorites</Nav.Link>
+              <Nav.Link
+                href="#favorites"
+                onSelect={() => {
+                  this.setState({ showFavorites: true });
+                }}
+              >
+                Favorites
+              </Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
