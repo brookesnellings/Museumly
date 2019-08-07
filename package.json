@@ -12,9 +12,11 @@
   "author": "Brooke Snellings",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "express": "^4.17.1",
     "mysql": "^2.17.1",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.10",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
