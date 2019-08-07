@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,7 +8,11 @@ class App extends React.Component {
   }
 
   render() {
-    return <h1>Museumly Browse Search Favorites</h1>;
+    return (
+      <div>
+        <Header />
+      </div>
+    );
   }
 }
 
