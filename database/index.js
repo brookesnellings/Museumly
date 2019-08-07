@@ -25,6 +25,17 @@ const retrieveCollections = () => {
   });
 };
 
+const filterByArtist = artist => {
+  connection.query(`SELECT * FROM artworks WHERE artist=${artist};`, (error, results) => {
+    if (error) {
+      console.log('Error searching by Artist: ', error);
+    } else {
+      console.log('Search successful!', results);
+      callback(results);
+    }
+  });
+};
+
 const retrieveFavorites = () => {
   connection.query(`SELECT * FROM favorites;`, (error, results) => {
     if (error) {
@@ -49,4 +60,4 @@ const addFavorite = favorite => {
   );
 };
 
-module.exports = { retrieveCollections, retrieveFavorites, addFavorite };
+module.exports = { retrieveCollections, filterByArtist, retrieveFavorites, addFavorite };
