@@ -8,8 +8,23 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showFavorites: false
+      showFavorites: false,
+      favorites: []
     };
+    this.fetchFavorites = this.fetchFavorites.bind(this);
+  }
+
+  fetchFavorites() {
+    axios
+      .get('/favorites')
+      .then(response => {
+        this.setState({
+          favorites: response
+        });
+      })
+      .catch(error => {
+        console.log('Error fetching favorites: ', error);
+      });
   }
 
   render() {
@@ -32,6 +47,7 @@ class Header extends React.Component {
                 href="#favorites"
                 onSelect={() => {
                   this.setState({ showFavorites: true });
+                  this.fetchFavorites();
                 }}
               >
                 Favorites
