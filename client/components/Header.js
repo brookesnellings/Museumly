@@ -19,7 +19,14 @@ class Header extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#collections">Collections</Nav.Link>
+              <Nav.Link
+                href="#collections"
+                onSelect={() => {
+                  this.setState({ showFavorites: false });
+                }}
+              >
+                Collections
+              </Nav.Link>
               <Nav.Link
                 href="#favorites"
                 onSelect={() => {
