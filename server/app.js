@@ -15,4 +15,9 @@ app.get('/favorites', (req, res) => {
   });
 });
 
+app.post('/artwork', (req, res) => {
+  console.log('THIS IS THE REQUEST: ', req);
+  db.seedDB(req);
+});
+
 module.exports = app;

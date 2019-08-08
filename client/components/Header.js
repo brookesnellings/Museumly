@@ -67,7 +67,7 @@ class Header extends React.Component {
           </Navbar.Collapse>
         </Navbar>
         <Artworks showArtworks={!this.state.showFavorites} />
-        <Favorites showFavorites={this.state.showFavorites} />
+        <Favorites showFavorites={this.state.showFavorites} favorites={this.state.favorites} />
       </div>
     );
   }

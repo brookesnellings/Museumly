@@ -14,6 +14,20 @@ connection.connect(err => {
   }
 });
 
+const seedDB = data => {
+  console.log('this is the DATA:', data);
+  connection.query(
+    `INSERT INTO artworks (artwork_id, artist, title, image) VALUES (${data.objectID}, "${data.artistDisplayName}", "${data.title}", "${data.primaryImage}")`,
+    (error, results) => {
+      if (error) {
+        console.log('Error seeding DB :', error);
+      } else {
+        console.log('DB seeded!', results);
+      }
+    }
+  );
+};
+
 const retrieveCollections = () => {
   connection.query(`SELECT * FROM artworks;`, (error, results) => {
     if (error) {
@@ -26,7 +40,7 @@ const retrieveCollections = () => {
 };
 
 const filterByArtist = artist => {
-  connection.query(`SELECT * FROM artworks WHERE artist=${artist};`, (error, results) => {
+  connection.query(`SELECT * FROM artworks WHERE artist="${artist}";`, (error, results) => {
     if (error) {
       console.log('Error searching by Artist: ', error);
     } else {
@@ -60,4 +74,4 @@ const addFavorite = favorite => {
   );
 };
 
-module.exports = { retrieveCollections, filterByArtist, retrieveFavorites, addFavorite };
+module.exports = { seedDB, retrieveCollections, filterByArtist, retrieveFavorites, addFavorite };
