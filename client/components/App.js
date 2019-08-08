@@ -10,9 +10,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       artworks: [],
-      showFavorites: false
+      favorites: [],
+      showFavorites: false,
+      userInput: ''
     };
     this.fetchArtworks = this.fetchArtworks.bind(this);
+    this.fetchFavorites = this.fetchFavorites.bind(this);
     this.updateShowFavorites = this.updateShowFavorites.bind(this);
   }
 
@@ -36,6 +39,20 @@ class App extends React.Component {
       });
   }
 
+  fetchFavorites() {
+    axios
+      .get('/favorites')
+      .then(response => {
+        console.log('Fetching favorites: ', response.data);
+        this.setState({
+          favorites: response.data
+        });
+      })
+      .catch(error => {
+        console.log('Error fetching favorites: ', error);
+      });
+  }
+
   updateShowFavorites() {
     this.setState({ showFavorites: !this.state.showFavorites });
   }
@@ -47,8 +64,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header showFavorites={this.updateShowFavorites} />
-        {this.state.showFavorites ? <Favorites /> : <Artworks artworks={this.state.artworks} />}
+        <Header showFavorites={this.updateShowFavorites} fetchFavorites={this.fetchFavorites} />
+        {this.state.showFavorites ? (
+          <Favorites favorites={this.state.favorites} />
+        ) : (
+          <Artworks artworks={this.state.artworks} />
+        )}
       </div>
     );
   }

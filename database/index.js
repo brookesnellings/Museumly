@@ -51,14 +51,17 @@ const filterByArtist = artist => {
 };
 
 const retrieveFavorites = callback => {
-  connection.query(`SELECT * FROM favorites;`, (error, results) => {
-    if (error) {
-      console.log('Error retrieving Favorites: ', error);
-    } else {
-      console.log('Favorites retrieved!', results);
-      callback(results);
+  connection.query(
+    `SELECT * FROM artworks JOIN favorites WHERE (favorites.artwork_id=artworks.artwork_id);`,
+    (error, results) => {
+      if (error) {
+        console.log('Error retrieving Favorites: ', error);
+      } else {
+        console.log('Favorites retrieved!');
+        callback(results);
+      }
     }
-  });
+  );
 };
 
 const addFavorite = favorite => {
@@ -68,7 +71,7 @@ const addFavorite = favorite => {
       if (err) {
         console.log('Error adding favorite :', error);
       } else {
-        console.log('Favorite added!', results);
+        console.log('Favorite added!');
       }
     }
   );

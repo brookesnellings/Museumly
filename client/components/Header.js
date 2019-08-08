@@ -12,7 +12,13 @@ function Header(props) {
             <Nav.Link href="#collections" onSelect={props.showFavorites}>
               Collections
             </Nav.Link>
-            <Nav.Link href="#favorites" onSelect={props.showFavorites}>
+            <Nav.Link
+              href="#favorites"
+              onSelect={() => {
+                props.showFavorites();
+                props.fetchFavorites();
+              }}
+            >
               Favorites
             </Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
