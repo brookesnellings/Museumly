@@ -17,7 +17,7 @@ connection.connect(err => {
 const seedDB = data => {
   console.log('this is the DATA:', data);
   connection.query(
-    `INSERT INTO artworks (artwork_id, artist, title, image, departmentID) VALUES (${data.objectID}, "${data.artistDisplayName}", "${data.title}", "${data.primaryImage}", 11)`,
+    `INSERT INTO artworks (artwork_id, artist, title, image, departmentID) VALUES (${data.objectID}, "${data.artistDisplayName}", "${data.title}", "${data.primaryImage}", 21)`,
     (error, results) => {
       if (error) {
         console.log('Error seeding DB :', error);

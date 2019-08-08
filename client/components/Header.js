@@ -38,7 +38,15 @@ function Header(props) {
               >
                 Modern Art
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">European Paintings</NavDropdown.Item>
+              <NavDropdown.Item
+                href="#action/3.2"
+                onSelect={() => {
+                  console.log('clicked on european paintings');
+                  props.filterByDepartment(11);
+                }}
+              >
+                European Paintings
+              </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Drawings and Prints</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Featured Exhibitions</NavDropdown.Item>

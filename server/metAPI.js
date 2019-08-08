@@ -3,7 +3,7 @@ const db = require('../database');
 
 const populatePaintingsAndSeedDB = () => {
   axios
-    .get('https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=11')
+    .get('https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=21')
     .then(response => {
       response.data.objectIDs.forEach(object => {
         axios
@@ -12,7 +12,8 @@ const populatePaintingsAndSeedDB = () => {
             if (
               response.data.primaryImage.length > 1 &&
               response.data.title.length > 1 &&
-              response.data.artistDisplayName.length > 1
+              response.data.artistDisplayName.length > 1 &&
+              response.data.classification === 'Paintings'
             ) {
               console.log('VERY COOL');
               setTimeout(() => {

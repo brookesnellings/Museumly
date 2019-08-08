@@ -3,6 +3,7 @@ import Header from './Header';
 import Artworks from './Artworks';
 import Favorites from './Favorites';
 import Filtered from './Filtered';
+import Departments from './Departments';
 import axios from 'axios';
 import { thisExpression } from '@babel/types';
 
@@ -168,6 +169,12 @@ class App extends React.Component {
           <Favorites favorites={this.state.favorites} />
         ) : this.state.showSearched ? (
           <Filtered filtered={this.state.filtered} />
+        ) : this.state.showFiltered ? (
+          <Departments
+            showModern={this.state.showModern}
+            modern={this.state.modern}
+            european={this.state.european}
+          />
         ) : (
           <Artworks artworks={this.state.artworks} addFavorite={this.addFavorite} />
         )}
