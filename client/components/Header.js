@@ -29,7 +29,12 @@ function Header(props) {
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form inline>
+          <Form
+            onChange={e => {
+              console.log(e.target.value);
+            }}
+            inline
+          >
             <FormControl type="text" placeholder="Search by Artist" className="mr-sm-2" />
             <Button variant="outline-success">Search</Button>
           </Form>
