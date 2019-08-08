@@ -8,54 +8,33 @@ class Artworks extends React.Component {
   }
 
   render() {
+    console.log('in artworks', this.props);
+
     return (
       <div>
-        {this.props.showArtworks && (
-          <Table responsive>
-            <tbody>
-              <tr>
+        <Table responsive>
+          <tbody>
+            <tr>
+              <td>
+                <Image
+                  src={'https://images.metmuseum.org/CRDImages/ep/original/DP352819.jpg'}
+                  fluid
+                />
+              </td>
+              <td>
+                <Image
+                  src={'https://images.metmuseum.org/CRDImages/ma/original/DP-13958-001.jpg'}
+                  fluid
+                />
+              </td>
+              {this.props.artworks.map(artwork => (
                 <td>
-                  <Image
-                    src={'https://images.metmuseum.org/CRDImages/ad/original/123908.jpg'}
-                    fluid
-                  />
+                  <Image src={artwork.image} fluid />
                 </td>
-                <td>
-                  <Image
-                    src={'https://images.metmuseum.org/CRDImages/ad/original/DP105063.jpg'}
-                    fluid
-                  />
-                </td>
-                <td>
-                  <Image
-                    src={'https://images.metmuseum.org/CRDImages/ad/original/192570.jpg'}
-                    fluid
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Image
-                    src={'https://images.metmuseum.org/CRDImages/ad/original/191549.jpg'}
-                    fluid
-                  />
-                </td>
-                <td>
-                  <Image
-                    src={'https://images.metmuseum.org/CRDImages/ad/original/DP220460.jpg'}
-                    fluid
-                  />
-                </td>
-                <td>
-                  <Image
-                    src={'https://images.metmuseum.org/CRDImages/ad/original/243157.jpg'}
-                    fluid
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </Table>
-        )}
+              ))}
+            </tr>
+          </tbody>
+        </Table>
       </div>
     );
   }

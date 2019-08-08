@@ -3,6 +3,7 @@ import Header from './Header';
 import Artworks from './Artworks';
 import Favorites from './Favorites';
 import axios from 'axios';
+import { thisExpression } from '@babel/types';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,10 +18,16 @@ class App extends React.Component {
     axios
       .get('/artworks')
       .then(response => {
-        console.log('Fetching artworks');
-        this.setState({
-          artworks: response.data
-        });
+        console.log('Fetching artworks: ', response.data);
+        console.log('Dank banana waffles: ', this.state.artworks);
+        this.setState(
+          {
+            artworks: response.data
+          },
+          () => {
+            console.log('inSetState:', this.state.artworks);
+          }
+        );
       })
       .catch(error => {
         console.log('Error fetching artworks: ', error);
@@ -32,6 +39,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.artworks);
     return (
       <div>
         <Header />
