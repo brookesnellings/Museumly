@@ -29,9 +29,9 @@ function Header(props) {
               Favorites
             </Nav.Link>
             <NavDropdown title="Explore By" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Artist</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Collection</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.1">Modern Art</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">European Paintings</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Drawings and Prints</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
