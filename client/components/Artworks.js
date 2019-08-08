@@ -18,21 +18,45 @@ function Artworks(props) {
           <Col>
             {artworks1.map(artwork => (
               <Row>
-                <Image src={artwork.image} fluid />
+                <Image
+                  key={artwork.artwork_id}
+                  src={artwork.image}
+                  onClick={() => {
+                    console.log('clicked!', artwork.artwork_id);
+                    props.addFavorite(artwork.artwork_id);
+                  }}
+                  fluid
+                />
               </Row>
             ))}
           </Col>
           <Col>
             {artworks2.map(artwork => (
               <Row>
-                <Image src={artwork.image} fluid />
+                  <Image
+                  key={artwork.artwork_id}
+                  src={artwork.image}
+                  onClick={() => {
+                    console.log('clicked!', artwork.artwork_id);
+                    props.addFavorite(artwork.artwork_id);
+                  }}
+                  fluid
+                />
               </Row>
             ))}
           </Col>
           <Col>
             {artworks3.map(artwork => (
               <Row>
-                <Image src={artwork.image} fluid />
+                <Image
+                  key={artwork.artwork_id}
+                  src={artwork.image}
+                  onClick={() => {
+                    console.log('clicked!', artwork.artwork_id);
+                    props.addFavorite(artwork.artwork_id);
+                  }}
+                  fluid
+                />
               </Row>
             ))}
           </Col>

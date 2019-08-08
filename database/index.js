@@ -64,17 +64,14 @@ const retrieveFavorites = callback => {
   );
 };
 
-const addFavorite = favorite => {
-  connection.query(
-    `INSERT INTO favorites (artwork_id) VALUES (${favorite.artwork_id})`,
-    (error, results) => {
-      if (err) {
-        console.log('Error adding favorite :', error);
-      } else {
-        console.log('Favorite added!');
-      }
+const saveFavorite = favorite => {
+  connection.query(`INSERT INTO favorites (artwork_id) VALUES (${favorite})`, (error, results) => {
+    if (error) {
+      console.log('Error adding favorite :', error);
+    } else {
+      console.log('Favorite added!');
     }
-  );
+  });
 };
 
-module.exports = { seedDB, retrieveCollections, filterByArtist, retrieveFavorites, addFavorite };
+module.exports = { seedDB, retrieveCollections, filterByArtist, retrieveFavorites, saveFavorite };

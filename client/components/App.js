@@ -17,6 +17,7 @@ class App extends React.Component {
     this.fetchArtworks = this.fetchArtworks.bind(this);
     this.fetchFavorites = this.fetchFavorites.bind(this);
     this.updateShowFavorites = this.updateShowFavorites.bind(this);
+    this.addFavorite = this.addFavorite.bind(this);
   }
 
   fetchArtworks() {
@@ -57,6 +58,19 @@ class App extends React.Component {
     this.setState({ showFavorites: !this.state.showFavorites });
   }
 
+  addFavorite(favorite) {
+    axios
+      .post('/favorites', {
+        artwork_id: favorite
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   componentDidMount() {
     this.fetchArtworks();
   }
@@ -68,7 +82,7 @@ class App extends React.Component {
         {this.state.showFavorites ? (
           <Favorites favorites={this.state.favorites} />
         ) : (
-          <Artworks artworks={this.state.artworks} />
+          <Artworks artworks={this.state.artworks} addFavorite={this.addFavorite} />
         )}
       </div>
     );
