@@ -1,43 +1,45 @@
 import React from 'react';
-import { Table, Image } from 'react-bootstrap';
+import { Container, Row, Col, Table, Image } from 'react-bootstrap';
 
-class Artworks extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    console.log('in artworks', this.props);
-
-    return (
-      <div>
-        <Table responsive>
-          <tbody>
-            <tr>
-              <td>
-                <Image
-                  src={'https://images.metmuseum.org/CRDImages/ep/original/DP352819.jpg'}
-                  fluid
-                />
-              </td>
-              <td>
-                <Image
-                  src={'https://images.metmuseum.org/CRDImages/ma/original/DP-13958-001.jpg'}
-                  fluid
-                />
-              </td>
-              {this.props.artworks.map(artwork => (
-                <td>
-                  <Image src={artwork.image} fluid />
-                </td>
-              ))}
-            </tr>
-          </tbody>
-        </Table>
-      </div>
-    );
-  }
+function Artworks(props) {
+  const artworks1 = props.artworks.slice(0, Math.ceil(props.artworks.length / 3));
+  const artworks2 = props.artworks.slice(
+    Math.ceil(props.artworks.length / 3),
+    Math.ceil((2 * props.artworks.length) / 3)
+  );
+  const artworks3 = props.artworks.slice(
+    Math.ceil((2 * props.artworks.length) / 3),
+    props.artworks.length
+  );
+  return (
+    <div>
+      <Container>
+        <Row>
+          <Col>
+            {artworks1.map(artwork => (
+              <Row>
+                <Image src={artwork.image} fluid />
+              </Row>
+            ))}
+          </Col>
+          <Col>
+            {artworks2.map(artwork => (
+              <Row>
+                <Image src={artwork.image} fluid />
+              </Row>
+            ))}
+          </Col>
+          <Col>
+            {artworks3.map(artwork => (
+              <Row>
+                <Image src={artwork.image} fluid />
+              </Row>
+            ))}
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
 export default Artworks;

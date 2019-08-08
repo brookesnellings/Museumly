@@ -9,9 +9,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      artworks: []
+      artworks: [],
+      showFavorites: false
     };
     this.fetchArtworks = this.fetchArtworks.bind(this);
+    this.updateShowFavorites = this.updateShowFavorites.bind(this);
   }
 
   fetchArtworks() {
@@ -34,17 +36,19 @@ class App extends React.Component {
       });
   }
 
+  updateShowFavorites() {
+    this.setState({ showFavorites: !this.state.showFavorites });
+  }
+
   componentDidMount() {
     this.fetchArtworks();
   }
 
   render() {
-    console.log(this.state.artworks);
     return (
       <div>
-        <Header />
-        <Artworks artworks={this.state.artworks} />
-        <Favorites />
+        <Header showFavorites={this.updateShowFavorites} />
+        {this.state.showFavorites ? <Favorites /> : <Artworks artworks={this.state.artworks} />}
       </div>
     );
   }

@@ -33,7 +33,7 @@ const retrieveCollections = callback => {
     if (error) {
       console.log('Error retrieving Collections: ', error);
     } else {
-      console.log('Collections retrieved!', results);
+      console.log('Collections retrieved!');
       callback(results);
     }
   });
