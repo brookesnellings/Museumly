@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Artworks from './Artworks';
 import Favorites from './Favorites';
+import Filtered from './Filtered';
 import axios from 'axios';
 import { thisExpression } from '@babel/types';
 
@@ -13,7 +14,8 @@ class App extends React.Component {
       favorites: [],
       showFavorites: false,
       userInput: '',
-      filtered: []
+      filtered: [],
+      showSearched: false
     };
     this.fetchArtworks = this.fetchArtworks.bind(this);
     this.fetchFavorites = this.fetchFavorites.bind(this);
@@ -21,6 +23,7 @@ class App extends React.Component {
     this.addFavorite = this.addFavorite.bind(this);
     this.captureSearchInput = this.captureSearchInput.bind(this);
     this.searchForArtist = this.searchForArtist.bind(this);
+    this.updateShowSearched = this.updateShowSearched.bind(this);
   }
 
   fetchArtworks() {
@@ -57,8 +60,12 @@ class App extends React.Component {
       });
   }
 
-  updateShowFavorites() {
-    this.setState({ showFavorites: !this.state.showFavorites });
+  updateShowFavorites(boolean) {
+    this.setState({ showFavorites: boolean });
+  }
+
+  updateShowSearched(boolean) {
+    this.setState({ showSearched: boolean });
   }
 
   addFavorite(favorite) {
@@ -95,6 +102,9 @@ class App extends React.Component {
       })
       .catch(error => {
         console.log(error);
+      })
+      .finally(() => {
+        this.updateShowSearched(true);
       });
   }
 
@@ -107,6 +117,7 @@ class App extends React.Component {
       <div>
         <Header
           showFavorites={this.updateShowFavorites}
+          showSearched={this.updateShowSearched}
           fetchFavorites={this.fetchFavorites}
           captureInput={this.captureSearchInput}
           searchForArtist={this.searchForArtist}
@@ -114,6 +125,8 @@ class App extends React.Component {
         />
         {this.state.showFavorites ? (
           <Favorites favorites={this.state.favorites} />
+        ) : this.state.showSearched ? (
+          <Filtered filtered={this.state.filtered} />
         ) : (
           <Artworks artworks={this.state.artworks} addFavorite={this.addFavorite} />
         )}

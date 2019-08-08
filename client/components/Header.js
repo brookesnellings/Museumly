@@ -9,13 +9,20 @@ function Header(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#collections" onSelect={props.showFavorites}>
+            <Nav.Link
+              href="#collections"
+              onSelect={() => {
+                props.showFavorites(false);
+                props.showSearched(false);
+              }}
+            >
               Collections
             </Nav.Link>
             <Nav.Link
               href="#favorites"
               onSelect={() => {
-                props.showFavorites();
+                props.showFavorites(true);
+                props.showSearched(false);
                 props.fetchFavorites();
               }}
             >
