@@ -12,12 +12,15 @@ class App extends React.Component {
       artworks: [],
       favorites: [],
       showFavorites: false,
-      userInput: ''
+      userInput: '',
+      filtered: []
     };
     this.fetchArtworks = this.fetchArtworks.bind(this);
     this.fetchFavorites = this.fetchFavorites.bind(this);
     this.updateShowFavorites = this.updateShowFavorites.bind(this);
     this.addFavorite = this.addFavorite.bind(this);
+    this.captureSearchInput = this.captureSearchInput.bind(this);
+    this.searchForArtist = this.searchForArtist.bind(this);
   }
 
   fetchArtworks() {
@@ -71,6 +74,30 @@ class App extends React.Component {
       });
   }
 
+  captureSearchInput(input) {
+    this.setState({
+      userInput: input
+    });
+  }
+
+  searchForArtist(artist) {
+    axios
+      .get('/search', {
+        params: {
+          artist: this.state.userInput
+        }
+      })
+      .then(response => {
+        console.log(response);
+        this.setState({
+          filtered: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   componentDidMount() {
     this.fetchArtworks();
   }
@@ -78,7 +105,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header showFavorites={this.updateShowFavorites} fetchFavorites={this.fetchFavorites} />
+        <Header
+          showFavorites={this.updateShowFavorites}
+          fetchFavorites={this.fetchFavorites}
+          captureInput={this.captureSearchInput}
+          searchForArtist={this.searchForArtist}
+          userInput={this.state.userInput}
+        />
         {this.state.showFavorites ? (
           <Favorites favorites={this.state.favorites} />
         ) : (

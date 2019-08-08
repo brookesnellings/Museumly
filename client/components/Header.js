@@ -32,11 +32,20 @@ function Header(props) {
           <Form
             onChange={e => {
               console.log(e.target.value);
+              props.captureInput(e.target.value);
             }}
             inline
           >
             <FormControl type="text" placeholder="Search by Artist" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
+            <Button
+              variant="outline-success"
+              onClick={() => {
+                console.log('clickety clicked');
+                props.searchForArtist(props.userInput);
+              }}
+            >
+              Search
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>

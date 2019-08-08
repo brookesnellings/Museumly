@@ -10,22 +10,27 @@ app.get('/', (req, res) => {
   res.status(200).send();
 });
 
-app.get('/favorites', (req, res) => {
-  db.retrieveFavorites(response => {
-    res.send(response);
-  });
-});
-
 app.get('/artworks', (req, res) => {
   db.retrieveCollections(response => {
     res.send(response);
   });
 });
 
+app.get('/favorites', (req, res) => {
+  db.retrieveFavorites(response => {
+    res.send(response);
+  });
+});
+
 app.post('/favorites', (req, res) => {
   console.log('THIS IS THE REQUEST: ', req.body);
-  db.saveFavorite(req.body.artwork_id)
+  db.saveFavorite(req.body.artwork_id);
   res.send('posted yeah');
 });
 
+app.get('/search', (req, res) => {
+  db.filterByArtist(req.query.artist, response => {
+    res.send(response);
+  });
+});
 module.exports = app;

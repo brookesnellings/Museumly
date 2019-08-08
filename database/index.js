@@ -39,7 +39,8 @@ const retrieveCollections = callback => {
   });
 };
 
-const filterByArtist = artist => {
+const filterByArtist = (artist, callback) => {
+  console.log('this is artist: ', artist);
   connection.query(`SELECT * FROM artworks WHERE artist="${artist}";`, (error, results) => {
     if (error) {
       console.log('Error searching by Artist: ', error);
