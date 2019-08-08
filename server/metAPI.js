@@ -3,7 +3,7 @@ const db = require('../database');
 
 const populatePaintingsAndSeedDB = () => {
   axios
-    .get('https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=11')
+    .get('https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=21')
     .then(response => {
       response.data.objectIDs.forEach(object => {
         axios
