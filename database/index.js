@@ -28,7 +28,7 @@ const seedDB = data => {
   );
 };
 
-const retrieveCollections = () => {
+const retrieveCollections = callback => {
   connection.query(`SELECT * FROM artworks;`, (error, results) => {
     if (error) {
       console.log('Error retrieving Collections: ', error);

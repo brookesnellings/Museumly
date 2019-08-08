@@ -15,6 +15,12 @@ app.get('/favorites', (req, res) => {
   });
 });
 
+app.get('/artworks', (req, res) => {
+  db.retrieveCollections(response => {
+    res.send(response);
+  });
+});
+
 app.post('/artwork', (req, res) => {
   console.log('THIS IS THE REQUEST: ', req);
   db.seedDB(req);
