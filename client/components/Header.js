@@ -29,11 +29,19 @@ function Header(props) {
               Favorites
             </Nav.Link>
             <NavDropdown title="Explore By" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Modern Art</NavDropdown.Item>
+              <NavDropdown.Item
+                href="#action/3.1"
+                onSelect={() => {
+                  console.log('clicked on modern art');
+                  props.filterByDepartment(21);
+                }}
+              >
+                Modern Art
+              </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">European Paintings</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Drawings and Prints</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.4">Featured Exhibitions</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form

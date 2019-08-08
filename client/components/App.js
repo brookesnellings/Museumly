@@ -15,7 +15,11 @@ class App extends React.Component {
       showFavorites: false,
       userInput: '',
       filtered: [],
-      showSearched: false
+      showSearched: false,
+      modern: [],
+      european: [],
+      showFiltered: false,
+      showModern: false
     };
     this.fetchArtworks = this.fetchArtworks.bind(this);
     this.fetchFavorites = this.fetchFavorites.bind(this);
@@ -24,6 +28,8 @@ class App extends React.Component {
     this.captureSearchInput = this.captureSearchInput.bind(this);
     this.searchForArtist = this.searchForArtist.bind(this);
     this.updateShowSearched = this.updateShowSearched.bind(this);
+    this.filterByDepartment = this.filterByDepartment.bind(this);
+    this.updateShowFiltered = this.updateShowFiltered.bind(this);
   }
 
   fetchArtworks() {
@@ -68,6 +74,10 @@ class App extends React.Component {
     this.setState({ showSearched: boolean });
   }
 
+  updateShowFiltered(boolean) {
+    this.setState({ showFiltered: boolean });
+  }
+
   addFavorite(favorite) {
     axios
       .post('/favorites', {
@@ -108,6 +118,36 @@ class App extends React.Component {
       });
   }
 
+  filterByDepartment(dept) {
+    console.log('filtering by dept: ', dept);
+    axios
+      .get('/department', {
+        params: {
+          department: dept
+        }
+      })
+      .then(response => {
+        let period;
+        if (dept === 11) {
+          this.setState({
+            european: response.data,
+            showModern: false
+          });
+        } else {
+          this.setState({
+            modern: response.data,
+            showModern: true
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      })
+      .finally(() => {
+        this.updateShowFiltered(true);
+      });
+  }
+
   componentDidMount() {
     this.fetchArtworks();
   }
@@ -122,6 +162,7 @@ class App extends React.Component {
           captureInput={this.captureSearchInput}
           searchForArtist={this.searchForArtist}
           userInput={this.state.userInput}
+          filterByDepartment={this.filterByDepartment}
         />
         {this.state.showFavorites ? (
           <Favorites favorites={this.state.favorites} />

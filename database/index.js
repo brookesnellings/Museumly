@@ -17,7 +17,7 @@ connection.connect(err => {
 const seedDB = data => {
   console.log('this is the DATA:', data);
   connection.query(
-    `INSERT INTO artworks (artwork_id, artist, title, image) VALUES (${data.objectID}, "${data.artistDisplayName}", "${data.title}", "${data.primaryImage}")`,
+    `INSERT INTO artworks (artwork_id, artist, title, image, departmentID) VALUES (${data.objectID}, "${data.artistDisplayName}", "${data.title}", "${data.primaryImage}", 11)`,
     (error, results) => {
       if (error) {
         console.log('Error seeding DB :', error);
@@ -51,6 +51,18 @@ const filterByArtist = (artist, callback) => {
   });
 };
 
+const filterByDept = (dept, callback) => {
+  console.log('this is dept: ', dept);
+  connection.query(`SELECT * FROM artworks WHERE departmentID="${dept}";`, (error, results) => {
+    if (error) {
+      console.log('Error filtering by Dept: ', error);
+    } else {
+      console.log('Filter by Dept successful!', results);
+      callback(results);
+    }
+  });
+};
+
 const retrieveFavorites = callback => {
   connection.query(
     `SELECT * FROM artworks JOIN favorites WHERE (favorites.artwork_id=artworks.artwork_id);`,
@@ -75,4 +87,11 @@ const saveFavorite = favorite => {
   });
 };
 
-module.exports = { seedDB, retrieveCollections, filterByArtist, retrieveFavorites, saveFavorite };
+module.exports = {
+  seedDB,
+  retrieveCollections,
+  filterByArtist,
+  filterByDept,
+  retrieveFavorites,
+  saveFavorite
+};

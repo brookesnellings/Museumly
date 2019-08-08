@@ -33,4 +33,11 @@ app.get('/search', (req, res) => {
     res.send(response);
   });
 });
+
+app.get('/department', (req, res) => {
+  db.filterByDept(req.query.department, response => {
+    res.send(response);
+  });
+});
+
 module.exports = app;
