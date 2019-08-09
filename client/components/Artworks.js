@@ -17,7 +17,7 @@ function Artworks(props) {
         <Row>
           <Col>
             {artworks1.map(artwork => (
-              <Row>
+              <Row className="artBox">
                 <Image
                   key={artwork.artwork_id}
                   src={artwork.image}
@@ -27,12 +27,15 @@ function Artworks(props) {
                   }}
                   fluid
                 />
+                <Button variant="link" className="searchIcon">
+                  <i className="far fa-heart"></i>
+                </Button>
               </Row>
             ))}
           </Col>
           <Col>
             {artworks2.map(artwork => (
-              <Row>
+              <Row className="artBox">
                 <Image
                   key={artwork.artwork_id}
                   src={artwork.image}
@@ -42,12 +45,15 @@ function Artworks(props) {
                   }}
                   fluid
                 />
+                <Button variant="link" className="searchIcon">
+                  <i className="far fa-heart"></i>
+                </Button>
               </Row>
             ))}
           </Col>
           <Col>
             {artworks3.map(artwork => (
-              <Row>
+              <Row className="artBox">
                 <Image
                   key={artwork.artwork_id}
                   src={artwork.image}
@@ -57,6 +63,9 @@ function Artworks(props) {
                   }}
                   fluid
                 />
+                <Button variant="link" className="searchIcon">
+                  <i className="far fa-heart"></i>
+                </Button>
               </Row>
             ))}
           </Col>

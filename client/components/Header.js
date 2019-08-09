@@ -61,7 +61,8 @@ function Header(props) {
           >
             <FormControl type="text" placeholder="Search by Artist" className="mr-sm-2" />
             <Button
-              variant="outline-success"
+              variant="link"
+              className="searchIcon"
               onClick={() => {
                 console.log('clickety clicked');
                 props.searchForArtist(props.userInput);
@@ -69,7 +70,7 @@ function Header(props) {
                 props.showFavorites(false);
               }}
             >
-              Search
+              <i className="fas fa-search"></i>
             </Button>
           </Form>
         </Navbar.Collapse>

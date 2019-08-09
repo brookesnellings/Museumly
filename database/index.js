@@ -29,7 +29,7 @@ const seedDB = data => {
 };
 
 const retrieveCollections = callback => {
-  connection.query(`SELECT * FROM artworks LIMIT 20;`, (error, results) => {
+  connection.query(`SELECT * FROM artworks LIMIT 75;`, (error, results) => {
     if (error) {
       console.log('Error retrieving Collections: ', error);
     } else {
