@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image, Overlay, Tooltip } from 'react-bootstrap';
 
 function Artworks(props) {
   const artworks1 = props.artworks.slice(0, Math.ceil(props.artworks.length / 3));
@@ -20,7 +20,7 @@ function Artworks(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              console.log('Garrett is the best', favoriteIDs);
+              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
@@ -75,7 +75,7 @@ function Artworks(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              console.log('Garrett is the best', favoriteIDs);
+              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
@@ -130,7 +130,7 @@ function Artworks(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              console.log('Garrett is the best', favoriteIDs);
+              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">

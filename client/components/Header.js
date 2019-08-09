@@ -14,6 +14,7 @@ function Header(props) {
               onSelect={() => {
                 props.showFavorites(false);
                 props.showSearched(false);
+                props.showFiltered(false);
               }}
             >
               Collections

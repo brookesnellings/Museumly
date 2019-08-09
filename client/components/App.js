@@ -167,6 +167,7 @@ class App extends React.Component {
           searchForArtist={this.searchForArtist}
           userInput={this.state.userInput}
           filterByDepartment={this.filterByDepartment}
+          showFiltered={this.updateShowFiltered}
         />
         {this.state.showFavorites ? (
           <Favorites favorites={this.state.favorites} />

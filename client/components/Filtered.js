@@ -20,7 +20,7 @@ function Filtered(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              console.log('Garrett is the best', favoriteIDs);
+              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
@@ -75,7 +75,7 @@ function Filtered(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              console.log('Garrett is the best', favoriteIDs);
+              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
@@ -130,7 +130,7 @@ function Filtered(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              console.log('Garrett is the best', favoriteIDs);
+              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
