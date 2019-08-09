@@ -18,8 +18,10 @@ class App extends React.Component {
       showSearched: false,
       modern: [],
       european: [],
+      drawings: [],
       showFiltered: false,
-      showModern: false
+      showModern: false,
+      showDrawings: false
     };
     this.fetchArtworks = this.fetchArtworks.bind(this);
     this.fetchFavorites = this.fetchFavorites.bind(this);
@@ -100,7 +102,7 @@ class App extends React.Component {
     });
   }
 
-  searchForArtist(artist) {
+  searchForArtist() {
     axios
       .get('/search', {
         params: {
@@ -136,10 +138,15 @@ class App extends React.Component {
             european: response.data,
             showModern: false
           });
-        } else {
+        } else if (dept === 21) {
           this.setState({
             modern: response.data,
             showModern: true
+          });
+        } else {
+          this.setState({
+            drawings: response.data,
+            showDrawings: true
           });
         }
       })
@@ -182,6 +189,8 @@ class App extends React.Component {
             showModern={this.state.showModern}
             modern={this.state.modern}
             european={this.state.european}
+            drawings={this.state.drawings}
+            showDrawings={this.state.showDrawings}
             favorites={this.state.favorites}
             addFavorite={this.addFavorite}
           />

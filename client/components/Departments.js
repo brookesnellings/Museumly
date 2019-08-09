@@ -5,6 +5,8 @@ function Departments(props) {
   let department;
   if (props.showModern) {
     department = props.modern;
+  } else if (props.showDrawings) {
+    department = props.drawings;
   } else {
     department = props.european;
   }

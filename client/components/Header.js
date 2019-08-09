@@ -48,7 +48,15 @@ function Header(props) {
               >
                 European Paintings
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Drawings and Prints</NavDropdown.Item>
+              <NavDropdown.Item
+                href="#action/3.3"
+                onSelect={() => {
+                  console.log('clicked on drawings and prints');
+                  props.filterByDepartment(9);
+                }}
+              >
+                Drawings and Prints
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Artists</NavDropdown.Item>
             </NavDropdown>
@@ -66,7 +74,7 @@ function Header(props) {
               className="searchIcon"
               onClick={() => {
                 console.log('clickety clicked');
-                props.searchForArtist(props.userInput);
+                props.searchForArtist();
                 props.showSearched(true);
                 props.showFavorites(false);
               }}

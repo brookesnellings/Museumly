@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button, Image, Overlay, Tooltip } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 function Artworks(props) {
   const artworks1 = props.artworks.slice(0, Math.ceil(props.artworks.length / 3));

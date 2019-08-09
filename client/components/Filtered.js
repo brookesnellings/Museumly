@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 function Filtered(props) {
   const filtered1 = props.filtered.slice(0, Math.ceil(props.filtered.length / 3));
