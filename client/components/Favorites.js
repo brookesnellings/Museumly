@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 function Favorites(props) {
   const favorites1 = props.favorites.slice(0, Math.ceil(props.favorites.length / 3));
@@ -17,22 +17,31 @@ function Favorites(props) {
         <Row>
           <Col>
             {favorites1.map(artwork => (
-              <Row>
+              <Row className="artBox">
                 <Image src={artwork.image} fluid />
+                <Button variant="link" className="searchIcon">
+                  <i className="far fa-heart"></i>
+                </Button>
               </Row>
             ))}
           </Col>
           <Col>
             {favorites2.map(artwork => (
-              <Row>
+              <Row className="artBox">
                 <Image src={artwork.image} fluid />
+                <Button variant="link" className="searchIcon">
+                  <i className="far fa-heart"></i>
+                </Button>
               </Row>
             ))}
           </Col>
           <Col>
             {favorites3.map(artwork => (
-              <Row>
+              <Row className="artBox">
                 <Image src={artwork.image} fluid />
+                <Button variant="link" className="searchIcon">
+                  <i className="far fa-heart"></i>
+                </Button>
               </Row>
             ))}
           </Col>
