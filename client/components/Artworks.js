@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 function Artworks(props) {
   const artworks1 = props.artworks.slice(0, Math.ceil(props.artworks.length / 3));
@@ -33,7 +33,7 @@ function Artworks(props) {
           <Col>
             {artworks2.map(artwork => (
               <Row>
-                  <Image
+                <Image
                   key={artwork.artwork_id}
                   src={artwork.image}
                   onClick={() => {

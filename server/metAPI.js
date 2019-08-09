@@ -12,17 +12,14 @@ const populatePaintingsAndSeedDB = () => {
             if (
               response.data.primaryImage.length > 1 &&
               response.data.title.length > 1 &&
-              response.data.artistDisplayName.length > 1 &&
-              response.data.classification === 'Paintings'
+              response.data.artistDisplayName.length > 1
             ) {
               console.log('VERY COOL');
-              setTimeout(() => {
-                db.seedDB(response.data);
-              }, 2);
+              db.seedDB(response.data);
             }
           })
           .catch(error => {
-            console.log('WHOOPS');
+            console.log('WHOOPS', error);
           });
       });
     })

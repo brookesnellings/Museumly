@@ -5,7 +5,6 @@ import Favorites from './Favorites';
 import Filtered from './Filtered';
 import Departments from './Departments';
 import axios from 'axios';
-import { thisExpression } from '@babel/types';
 
 class App extends React.Component {
   constructor(props) {

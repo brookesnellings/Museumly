@@ -1,10 +1,12 @@
 const express = require('express');
+const compression = require('compression');
 const db = require('../database');
 
 const app = express();
 
 app.use('/', express.static('dist'));
 app.use(express.json());
+app.use(compression());
 
 app.get('/', (req, res) => {
   res.status(200).send();
