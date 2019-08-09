@@ -12,6 +12,7 @@ function Header(props) {
             <Nav.Link
               href="#collections"
               onSelect={() => {
+                props.fetchArtworks();
                 props.showFavorites(false);
                 props.showSearched(false);
                 props.showFiltered(false);
@@ -90,6 +91,7 @@ function Header(props) {
                 props.searchForArtist();
                 props.showSearched(true);
                 props.showFavorites(false);
+                props.showArtists(false);
               }}
             >
               <i className="fas fa-search"></i>

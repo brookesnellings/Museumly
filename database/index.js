@@ -29,14 +29,18 @@ const seedDB = data => {
 };
 
 const retrieveCollections = callback => {
-  connection.query(`SELECT * FROM artworks LIMIT 75;`, (error, results) => {
-    if (error) {
-      console.log('Error retrieving Collections: ', error);
-    } else {
-      console.log('Collections retrieved!');
-      callback(results);
+  connection.query(
+    `SELECT * FROM artworks ORDER BY RAND()
+  LIMIT 75;`,
+    (error, results) => {
+      if (error) {
+        console.log('Error retrieving Collections: ', error);
+      } else {
+        console.log('Collections retrieved!');
+        callback(results);
+      }
     }
-  });
+  );
 };
 
 const filterByArtist = (artist, callback) => {

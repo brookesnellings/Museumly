@@ -213,6 +213,7 @@ class App extends React.Component {
           filterByDepartment={this.filterByDepartment}
           showFiltered={this.updateShowFiltered}
           showArtists={this.updateShowArtists}
+          fetchArtworks={this.fetchArtworks}
         />
         {this.state.showArtists ? (
           <Artists artists={this.state.artists} />
