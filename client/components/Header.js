@@ -49,7 +49,7 @@ function Header(props) {
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Drawings and Prints</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Featured Exhibitions</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.4">Artists</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form
@@ -59,7 +59,7 @@ function Header(props) {
             }}
             inline
           >
-            <FormControl type="text" placeholder="Search by Artist" className="mr-sm-2" />
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button
               variant="link"
               className="searchIcon"
