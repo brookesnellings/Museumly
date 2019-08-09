@@ -171,12 +171,18 @@ class App extends React.Component {
         {this.state.showFavorites ? (
           <Favorites favorites={this.state.favorites} />
         ) : this.state.showSearched ? (
-          <Filtered filtered={this.state.filtered} />
+          <Filtered
+            filtered={this.state.filtered}
+            favorites={this.state.favorites}
+            addFavorite={this.addFavorite}
+          />
         ) : this.state.showFiltered ? (
           <Departments
             showModern={this.state.showModern}
             modern={this.state.modern}
             european={this.state.european}
+            favorites={this.state.favorites}
+            addFavorite={this.addFavorite}
           />
         ) : (
           <Artworks

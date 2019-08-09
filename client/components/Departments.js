@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 function Departments(props) {
   let department;
@@ -15,34 +15,177 @@ function Departments(props) {
   );
   const department3 = department.slice(Math.ceil((2 * department.length) / 3), department.length);
   return (
-    <div>
+    <div id="wholethang">
       <Container>
         <Row>
           <Col>
-            {department1.map(artwork => (
-              <Row>
-                <Image src={artwork.image} fluid />
-              </Row>
-            ))}
+            {department1.map(artwork => {
+              let favoriteIDs = props.favorites.map(favorite => {
+                return favorite.artwork_id;
+              });
+              console.log('Garrett is the best', favoriteIDs);
+              if (favoriteIDs.includes(artwork.artwork_id)) {
+                return (
+                  <Row className="artBox">
+                    <Image
+                      key={artwork.artwork_id}
+                      src={artwork.image}
+                      onClick={() => {
+                        console.log('clicked!', artwork.artwork_id);
+                      }}
+                      fluid
+                    />
+                    <Button
+                      variant="link"
+                      className="searchIcon"
+                      onClick={() => {
+                        console.log('I heart this!');
+                        props.addFavorite(artwork.artwork_id);
+                      }}
+                    >
+                      <i className="fas fa-heart"></i>
+                    </Button>
+                  </Row>
+                );
+              } else {
+                return (
+                  <Row className="artBox">
+                    <Image
+                      key={artwork.artwork_id}
+                      src={artwork.image}
+                      onClick={() => {
+                        console.log('clicked!', artwork.artwork_id);
+                      }}
+                      fluid
+                    />
+                    <Button
+                      variant="link"
+                      className="searchIcon"
+                      onClick={() => {
+                        console.log('I heart this!');
+                        props.addFavorite(artwork.artwork_id);
+                      }}
+                    >
+                      <i className="far fa-heart"></i>
+                    </Button>
+                  </Row>
+                );
+              }
+            })}
           </Col>
           <Col>
-            {department2.map(artwork => (
-              <Row>
-                <Image src={artwork.image} fluid />
-              </Row>
-            ))}
+            {department2.map(artwork => {
+              let favoriteIDs = props.favorites.map(favorite => {
+                return favorite.artwork_id;
+              });
+              console.log('Garrett is the best', favoriteIDs);
+              if (favoriteIDs.includes(artwork.artwork_id)) {
+                return (
+                  <Row className="artBox">
+                    <Image
+                      key={artwork.artwork_id}
+                      src={artwork.image}
+                      onClick={() => {
+                        console.log('clicked!', artwork.artwork_id);
+                      }}
+                      fluid
+                    />
+                    <Button
+                      variant="link"
+                      className="searchIcon"
+                      onClick={() => {
+                        console.log('I heart this!');
+                        props.addFavorite(artwork.artwork_id);
+                      }}
+                    >
+                      <i className="fas fa-heart"></i>
+                    </Button>
+                  </Row>
+                );
+              } else {
+                return (
+                  <Row className="artBox">
+                    <Image
+                      key={artwork.artwork_id}
+                      src={artwork.image}
+                      onClick={() => {
+                        console.log('clicked!', artwork.artwork_id);
+                      }}
+                      fluid
+                    />
+                    <Button
+                      variant="link"
+                      className="searchIcon"
+                      onClick={() => {
+                        console.log('I heart this!');
+                        props.addFavorite(artwork.artwork_id);
+                      }}
+                    >
+                      <i className="far fa-heart"></i>
+                    </Button>
+                  </Row>
+                );
+              }
+            })}
           </Col>
           <Col>
-            {department3.map(artwork => (
-              <Row>
-                <Image src={artwork.image} fluid />
-              </Row>
-            ))}
+            {department3.map(artwork => {
+              let favoriteIDs = props.favorites.map(favorite => {
+                return favorite.artwork_id;
+              });
+              console.log('Garrett is the best', favoriteIDs);
+              if (favoriteIDs.includes(artwork.artwork_id)) {
+                return (
+                  <Row className="artBox">
+                    <Image
+                      key={artwork.artwork_id}
+                      src={artwork.image}
+                      onClick={() => {
+                        console.log('clicked!', artwork.artwork_id);
+                      }}
+                      fluid
+                    />
+                    <Button
+                      variant="link"
+                      className="searchIcon"
+                      onClick={() => {
+                        console.log('I heart this!');
+                        props.addFavorite(artwork.artwork_id);
+                      }}
+                    >
+                      <i className="fas fa-heart"></i>
+                    </Button>
+                  </Row>
+                );
+              } else {
+                return (
+                  <Row className="artBox">
+                    <Image
+                      key={artwork.artwork_id}
+                      src={artwork.image}
+                      onClick={() => {
+                        console.log('clicked!', artwork.artwork_id);
+                      }}
+                      fluid
+                    />
+                    <Button
+                      variant="link"
+                      className="searchIcon"
+                      onClick={() => {
+                        console.log('I heart this!');
+                        props.addFavorite(artwork.artwork_id);
+                      }}
+                    >
+                      <i className="far fa-heart"></i>
+                    </Button>
+                  </Row>
+                );
+              }
+            })}
           </Col>
         </Row>
       </Container>
     </div>
   );
 }
-
 export default Departments;

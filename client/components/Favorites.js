@@ -20,7 +20,7 @@ function Favorites(props) {
               <Row className="artBox">
                 <Image src={artwork.image} fluid />
                 <Button variant="link" className="searchIcon">
-                  <i className="far fa-heart"></i>
+                  <i className="fas fa-heart"></i>
                 </Button>
               </Row>
             ))}
@@ -30,7 +30,7 @@ function Favorites(props) {
               <Row className="artBox">
                 <Image src={artwork.image} fluid />
                 <Button variant="link" className="searchIcon">
-                  <i className="far fa-heart"></i>
+                  <i className="fas fa-heart"></i>
                 </Button>
               </Row>
             ))}
@@ -40,7 +40,7 @@ function Favorites(props) {
               <Row className="artBox">
                 <Image src={artwork.image} fluid />
                 <Button variant="link" className="searchIcon">
-                  <i className="far fa-heart"></i>
+                  <i className="fas fa-heart"></i>
                 </Button>
               </Row>
             ))}
