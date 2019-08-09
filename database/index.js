@@ -87,11 +87,23 @@ const saveFavorite = favorite => {
   });
 };
 
+const retrieveArtists = callback => {
+  connection.query(`SELECT artist FROM artworks;`, (error, results) => {
+    if (error) {
+      console.log('Error retrieving Artists: ', error);
+    } else {
+      console.log('Artists retrieved!', results);
+      callback(results);
+    }
+  });
+};
+
 module.exports = {
   seedDB,
   retrieveCollections,
   filterByArtist,
   filterByDept,
   retrieveFavorites,
-  saveFavorite
+  saveFavorite,
+  retrieveArtists
 };

@@ -42,4 +42,11 @@ app.get('/department', (req, res) => {
   });
 });
 
+app.get('/artists', (req, res) => {
+  db.retrieveArtists(response => {
+    console.log('RESPONSE RESPONSE RESPONSE: ', response);
+    res.send(response);
+  });
+});
+
 module.exports = app;

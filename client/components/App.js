@@ -4,6 +4,7 @@ import Artworks from './Artworks';
 import Favorites from './Favorites';
 import Filtered from './Filtered';
 import Departments from './Departments';
+import Artists from './Artists';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -21,7 +22,9 @@ class App extends React.Component {
       drawings: [],
       showFiltered: false,
       showModern: false,
-      showDrawings: false
+      showDrawings: false,
+      artists: [],
+      showArtists: false
     };
     this.fetchArtworks = this.fetchArtworks.bind(this);
     this.fetchFavorites = this.fetchFavorites.bind(this);
@@ -32,6 +35,8 @@ class App extends React.Component {
     this.updateShowSearched = this.updateShowSearched.bind(this);
     this.filterByDepartment = this.filterByDepartment.bind(this);
     this.updateShowFiltered = this.updateShowFiltered.bind(this);
+    this.updateShowArtists = this.updateShowArtists.bind(this);
+    this.fetchArtists = this.fetchArtists.bind(this);
   }
 
   fetchArtworks() {
@@ -158,9 +163,41 @@ class App extends React.Component {
       });
   }
 
+  updateShowArtists(boolean) {
+    this.setState({
+      showArtists: boolean
+    });
+  }
+
+  fetchArtists() {
+    axios
+      .get('/artists')
+      .then(response => {
+        console.log('RESPONSE RESPONSE: ', response);
+        const whateverEven = response.data.map(artist => {
+          return artist.artist;
+        });
+        console.log(whateverEven);
+        const realArtists = [];
+        for (let i = 0; i < whateverEven.length; i++) {
+          if (!realArtists.includes(whateverEven[i])) {
+            realArtists.push(whateverEven[i]);
+          }
+        }
+        console.log('REAL ARTISTS CODE TIL 1AM:', realArtists);
+        this.setState({
+          artists: realArtists
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   componentDidMount() {
     this.fetchArtworks();
     this.fetchFavorites();
+    this.fetchArtists();
   }
 
   render() {
@@ -175,8 +212,11 @@ class App extends React.Component {
           userInput={this.state.userInput}
           filterByDepartment={this.filterByDepartment}
           showFiltered={this.updateShowFiltered}
+          showArtists={this.updateShowArtists}
         />
-        {this.state.showFavorites ? (
+        {this.state.showArtists ? (
+          <Artists artists={this.state.artists} />
+        ) : this.state.showFavorites ? (
           <Favorites favorites={this.state.favorites} />
         ) : this.state.showSearched ? (
           <Filtered

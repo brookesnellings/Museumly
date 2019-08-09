@@ -15,6 +15,7 @@ function Header(props) {
                 props.showFavorites(false);
                 props.showSearched(false);
                 props.showFiltered(false);
+                props.showArtists(false);
               }}
             >
               Collections
@@ -25,6 +26,7 @@ function Header(props) {
                 props.showFavorites(true);
                 props.showSearched(false);
                 props.fetchFavorites();
+                props.showArtists(false);
               }}
             >
               Favorites
@@ -35,6 +37,7 @@ function Header(props) {
                 onSelect={() => {
                   console.log('clicked on modern art');
                   props.filterByDepartment(21);
+                  props.showArtists(false);
                 }}
               >
                 Modern Art
@@ -44,6 +47,7 @@ function Header(props) {
                 onSelect={() => {
                   console.log('clicked on european paintings');
                   props.filterByDepartment(11);
+                  props.showArtists(false);
                 }}
               >
                 European Paintings
@@ -53,12 +57,21 @@ function Header(props) {
                 onSelect={() => {
                   console.log('clicked on drawings and prints');
                   props.filterByDepartment(9);
+                  props.showArtists(false);
                 }}
               >
                 Drawings and Prints
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Artists</NavDropdown.Item>
+              <NavDropdown.Item
+                href="#action/3.4"
+                onSelect={() => {
+                  console.log('clicked on artists');
+                  props.showArtists(true);
+                }}
+              >
+                Artists
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form
