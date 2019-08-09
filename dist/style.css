@@ -24,18 +24,9 @@
 
 .artBox .btn {
   position: absolute;
-  top: 8%;
-  left: 90%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  color: white;
+  top: 5%;
+  left: 85%;
+  color: #ff492f;
   font-size: 17px;
-  /* padding: 12px 24px; */
-  border: none;
   cursor: pointer;
-  /* border-radius: 5px; */
 }
-
-/* .artBox .btn:hover {
-  background-color: black;
-} */

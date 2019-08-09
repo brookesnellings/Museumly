@@ -88,6 +88,9 @@ class App extends React.Component {
       })
       .catch(error => {
         console.log(error);
+      })
+      .finally(() => {
+        this.fetchFavorites();
       });
   }
 
@@ -150,6 +153,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.fetchArtworks();
+    this.fetchFavorites();
   }
 
   render() {
@@ -175,7 +179,11 @@ class App extends React.Component {
             european={this.state.european}
           />
         ) : (
-          <Artworks artworks={this.state.artworks} addFavorite={this.addFavorite} />
+          <Artworks
+            artworks={this.state.artworks}
+            addFavorite={this.addFavorite}
+            favorites={this.state.favorites}
+          />
         )}
       </div>
     );
