@@ -1,49 +1,51 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import { Link, withRouter } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 
 function Header(props) {
   return (
-    <div>
+    <>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand>  <Link style={{ color: 'black' }} to={"/"}> Museumly</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Link
-              to="/"
-              onSelect={() => {
-                props.fetchArtworks();
-              }}
-            >
-              Artworks
-            </Link>
-            <Link
+            <LinkContainer
+              to="/">
+              <Nav.Link
+                onSelect={() => {
+                  props.fetchArtworks();
+                }}
+              >
+                Artworks
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer
               to="/favorites"
               onSelect={() => {
                 props.fetchFavorites();
               }}
             >
               Favorites
-            </Link>
+            </LinkContainer>
             <NavDropdown title="Explore By" id="basic-nav-dropdown">
-              <NavDropdown.Item
-                href="#modern"
-                onSelect={() => {
-                  console.log('clicked on modern art');
-                  props.filterByDepartment(21);
-                }}
-              >
+              <NavDropdown.Item onSelect={() => {
+                console.log('clicked on modern art');
+                props.filterByDepartment(21);
+              }}>
+                <LinkContainer to="/explore/modern"
+                >
+                </LinkContainer>
                 Modern Art
               </NavDropdown.Item>
-              <NavDropdown.Item> <Link
-                to="/european"
-                onSelect={() => {
-                  console.log('clicked on european paintings');
-                  props.filterByDepartment(11);
-                }}
+              <NavDropdown.Item onSelect={() => {
+                console.log('clicked on european paintings');
+                props.filterByDepartment(11);
+              }}> <LinkContainer
+                to="/explore/european"
               >
-                European Paintings</Link>
+                  European Paintings</LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item
                 href="#prints"
@@ -86,7 +88,7 @@ function Header(props) {
           </Form>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </>
   );
 }
 

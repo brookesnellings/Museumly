@@ -12,7 +12,7 @@ function Searched(props) {
     props.searched.length
   );
   return (
-    <div id="wholethang">
+    <>
       <Container>
         <Row>
           <Col>
@@ -74,7 +74,6 @@ function Searched(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
@@ -129,7 +128,6 @@ function Searched(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
@@ -181,7 +179,7 @@ function Searched(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }
 export default Searched;
