@@ -154,6 +154,7 @@ class App extends React.Component {
   componentDidMount() {
     this.fetchArtworks();
     this.fetchFavorites();
+    this.fetchArtists();
   }
 
   render() {

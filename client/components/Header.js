@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import { Link, withRouter } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
 
 function Header(props) {
   return (
@@ -11,7 +10,7 @@ function Header(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <LinkContainer
+            <Link
               to="/">
               <Nav.Link
                 onSelect={() => {
@@ -20,50 +19,47 @@ function Header(props) {
               >
                 Artworks
               </Nav.Link>
-            </LinkContainer>
-            <LinkContainer
+            </Link>
+            <Link
               to="/favorites"
-              onSelect={() => {
-                props.fetchFavorites();
-              }}
-            >
-              Favorites
-            </LinkContainer>
+            > <Nav.Link onSelect={() => {
+              props.fetchFavorites();
+            }}>
+                Favorites</Nav.Link>
+            </Link>
             <NavDropdown title="Explore By" id="basic-nav-dropdown">
               <NavDropdown.Item onSelect={() => {
                 console.log('clicked on modern art');
                 props.filterByDepartment(21);
               }}>
-                <LinkContainer to="/explore/modern"
+                <Link style={{ color: 'black' }} to="/explore/modern"
                 >
-                </LinkContainer>
-                Modern Art
+                  Modern Art
+                </Link>
               </NavDropdown.Item>
               <NavDropdown.Item onSelect={() => {
                 console.log('clicked on european paintings');
                 props.filterByDepartment(11);
-              }}> <LinkContainer
+              }}> <Link style={{ color: 'black' }}
                 to="/explore/european"
               >
-                  European Paintings</LinkContainer>
+                  European Paintings</Link>
               </NavDropdown.Item>
               <NavDropdown.Item
-                href="#prints"
                 onSelect={() => {
                   console.log('clicked on drawings and prints');
                   props.filterByDepartment(9);
                 }}
-              >
-                Drawings and Prints
+              > <Link style={{ color: 'black' }} to="/explore/prints">
+                  Drawings and Prints</Link>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item
-                href="#artists"
                 onSelect={() => {
                   console.log('clicked on artists');
                 }}
-              >
-                Artists
+              > <Link style={{ color: 'black' }} to="/explore/artists">
+                  Artists</Link>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
@@ -83,7 +79,7 @@ function Header(props) {
                 props.searchForArtist();
               }}
             >
-              {/* <i className="fas fa-search"></i> */}
+              <i className="fas fa-search"></i>
             </Button>
           </Form>
         </Navbar.Collapse>
