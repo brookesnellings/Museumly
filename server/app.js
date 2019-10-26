@@ -8,42 +8,63 @@ app.use('/', express.static('dist'));
 app.use(express.json());
 app.use(compression());
 
-app.get('/', (req, res) => {
-  res.status(200).send();
-});
-
 app.get('/artworks', (req, res) => {
-  db.retrieveCollections(response => {
-    res.status(200).send(response);
+  db.retrieveCollections((err, response) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.status(200).send(response);
+    }
   });
 });
 
 app.get('/favorites', (req, res) => {
-  db.retrieveFavorites(response => {
-    res.status(200).send(response);
+  db.retrieveFavorites((err, response) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.status(200).send(response);
+    }
   });
 });
 
 app.post('/favorites', (req, res) => {
-  db.saveFavorite(req.body.artwork_id);
-  res.status(201).send();
+  db.saveFavorite(req.body.artwork_id, (err, favorite) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.status(201).send(favorite);
+    }
+  });
 });
 
 app.get('/search', (req, res) => {
-  db.filterByArtist(req.query.artist, response => {
-    res.status(200).send(response);
+  db.filterByArtist(req.query.artist, (err, response) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.status(200).send(response);
+    }
   });
 });
 
 app.get('/department', (req, res) => {
-  db.filterByDept(req.query.department, response => {
-    res.status(200).send(response);
+  db.filterByDept(req.query.department, (err, response) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.status(200).send(response);
+    }
   });
 });
 
 app.get('/artists', (req, res) => {
-  db.retrieveArtists(response => {
-    res.status(200).send(response);
+  db.retrieveArtists((err, response) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.status(200).send(response);
+    }
   });
 });
 

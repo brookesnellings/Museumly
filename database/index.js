@@ -34,9 +34,10 @@ const retrieveCollections = callback => {
     (error, results) => {
       if (error) {
         console.log('Error retrieving Collections: ', error);
+        callback(error);
       } else {
         console.log('Collections retrieved!');
-        callback(results);
+        callback(null, results);
       }
     }
   );
@@ -46,9 +47,10 @@ const filterByArtist = (artist, callback) => {
   connection.query(`SELECT * FROM artworks WHERE artist="${artist}";`, (error, results) => {
     if (error) {
       console.log('Error searching by Artist: ', error);
+      callback(error);
     } else {
       console.log('Search successful!');
-      callback(results);
+      callback(null, results);
     }
   });
 };
@@ -57,9 +59,10 @@ const filterByDept = (dept, callback) => {
   connection.query(`SELECT * FROM artworks WHERE departmentID="${dept}";`, (error, results) => {
     if (error) {
       console.log('Error filtering by Dept: ', error);
+      callback(error);
     } else {
       console.log('Filter by Dept successful!');
-      callback(results);
+      callback(null, results);
     }
   });
 };
@@ -70,9 +73,10 @@ const retrieveFavorites = callback => {
     (error, results) => {
       if (error) {
         console.log('Error retrieving Favorites: ', error);
+        callback(error);
       } else {
         console.log('Favorites retrieved!');
-        callback(results);
+        callback(null, results);
       }
     }
   );
@@ -82,8 +86,10 @@ const saveFavorite = favorite => {
   connection.query(`INSERT INTO favorites (artwork_id) VALUES (${favorite})`, (error, results) => {
     if (error) {
       console.log('Error adding favorite :', error);
+      callback(error);
     } else {
       console.log('Favorite added!');
+      callback(null, results)
     }
   });
 };
@@ -92,9 +98,10 @@ const retrieveArtists = callback => {
   connection.query(`SELECT artist FROM artworks;`, (error, results) => {
     if (error) {
       console.log('Error retrieving Artists: ', error);
+      callback(error);
     } else {
       console.log('Artists retrieved!');
-      callback(results);
+      callback(null, results);
     }
   });
 };
