@@ -1,22 +1,76 @@
 import React from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
-function Filtered(props) {
-  const filtered1 = props.filtered.slice(0, Math.ceil(props.filtered.length / 3));
-  const filtered2 = props.filtered.slice(
-    Math.ceil(props.filtered.length / 3),
-    Math.ceil((2 * props.filtered.length) / 3)
+function Searched(props) {
+  const searched1 = props.searched.slice(0, Math.ceil(props.searched.length / 3));
+  const searched2 = props.searched.slice(
+    Math.ceil(props.searched.length / 3),
+    Math.ceil((2 * props.searched.length) / 3)
   );
-  const filtered3 = props.filtered.slice(
-    Math.ceil((2 * props.filtered.length) / 3),
-    props.filtered.length
+  const searched3 = props.searched.slice(
+    Math.ceil((2 * props.searched.length) / 3),
+    props.searched.length
   );
   return (
     <div id="wholethang">
       <Container>
         <Row>
           <Col>
-            {filtered1.map(artwork => {
+            {searched1.map(artwork => {
+              let favoriteIDs = props.favorites.map(favorite => {
+                return favorite.artwork_id;
+              });
+              if (favoriteIDs.includes(artwork.artwork_id)) {
+                return (
+                  <Row className="artBox">
+                    <Image
+                      key={artwork.artwork_id}
+                      src={artwork.image}
+                      onClick={() => {
+                        console.log('clicked!', artwork.artwork_id);
+                      }}
+                      fluid
+                    />
+                    <Button
+                      variant="link"
+                      className="searchIcon"
+                      onClick={() => {
+                        console.log('I heart this!');
+                        props.addFavorite(artwork.artwork_id);
+                      }}
+                    >
+                      <i className="fas fa-heart"></i>
+                    </Button>
+                  </Row>
+                );
+              } else {
+                return (
+                  <Row className="artBox">
+                    <Image
+                      key={artwork.artwork_id}
+                      src={artwork.image}
+                      onClick={() => {
+                        console.log('clicked!', artwork.artwork_id);
+                      }}
+                      fluid
+                    />
+                    <Button
+                      variant="link"
+                      className="searchIcon"
+                      onClick={() => {
+                        console.log('I heart this!');
+                        props.addFavorite(artwork.artwork_id);
+                      }}
+                    >
+                      <i className="far fa-heart"></i>
+                    </Button>
+                  </Row>
+                );
+              }
+            })}
+          </Col>
+          <Col>
+            {searched2.map(artwork => {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
@@ -71,62 +125,7 @@ function Filtered(props) {
             })}
           </Col>
           <Col>
-            {filtered2.map(artwork => {
-              let favoriteIDs = props.favorites.map(favorite => {
-                return favorite.artwork_id;
-              });
-              // console.log('Garrett is the best', favoriteIDs);
-              if (favoriteIDs.includes(artwork.artwork_id)) {
-                return (
-                  <Row className="artBox">
-                    <Image
-                      key={artwork.artwork_id}
-                      src={artwork.image}
-                      onClick={() => {
-                        console.log('clicked!', artwork.artwork_id);
-                      }}
-                      fluid
-                    />
-                    <Button
-                      variant="link"
-                      className="searchIcon"
-                      onClick={() => {
-                        console.log('I heart this!');
-                        props.addFavorite(artwork.artwork_id);
-                      }}
-                    >
-                      <i className="fas fa-heart"></i>
-                    </Button>
-                  </Row>
-                );
-              } else {
-                return (
-                  <Row className="artBox">
-                    <Image
-                      key={artwork.artwork_id}
-                      src={artwork.image}
-                      onClick={() => {
-                        console.log('clicked!', artwork.artwork_id);
-                      }}
-                      fluid
-                    />
-                    <Button
-                      variant="link"
-                      className="searchIcon"
-                      onClick={() => {
-                        console.log('I heart this!');
-                        props.addFavorite(artwork.artwork_id);
-                      }}
-                    >
-                      <i className="far fa-heart"></i>
-                    </Button>
-                  </Row>
-                );
-              }
-            })}
-          </Col>
-          <Col>
-            {filtered3.map(artwork => {
+            {searched3.map(artwork => {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
@@ -185,4 +184,4 @@ function Filtered(props) {
     </div>
   );
 }
-export default Filtered;
+export default Searched;

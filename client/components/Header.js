@@ -1,74 +1,64 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Link, withRouter } from "react-router-dom";
 
 function Header(props) {
   return (
     <div>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Museumly</Navbar.Brand>
+        <Navbar.Brand>  <Link style={{ color: 'black' }} to={"/"}> Museumly</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link
-              href="#collections"
+            <Link
+              to="/"
               onSelect={() => {
                 props.fetchArtworks();
-                props.showComponent(showFavorites, false);
-                props.showComponent(showSearched, false);
-                props.showComponent(showFiltered, false);
-                props.showComponent(showArtists, false);
               }}
             >
-              Collections
-            </Nav.Link>
-            <Nav.Link
-              href="#favorites"
+              Artworks
+            </Link>
+            <Link
+              to="/favorites"
               onSelect={() => {
-                props.showComponent(showFavorites, true);
-                props.showComponent(showSearched, false);
                 props.fetchFavorites();
-                props.showComponent(showArtists, false);
               }}
             >
               Favorites
-            </Nav.Link>
+            </Link>
             <NavDropdown title="Explore By" id="basic-nav-dropdown">
               <NavDropdown.Item
-                href="#action/3.1"
+                href="#modern"
                 onSelect={() => {
                   console.log('clicked on modern art');
                   props.filterByDepartment(21);
-                  props.showComponent(showArtists, false);
                 }}
               >
                 Modern Art
               </NavDropdown.Item>
-              <NavDropdown.Item
-                href="#action/3.2"
+              <NavDropdown.Item> <Link
+                to="/european"
                 onSelect={() => {
                   console.log('clicked on european paintings');
                   props.filterByDepartment(11);
-                  props.showComponent(showArtists, false);
                 }}
               >
-                European Paintings
+                European Paintings</Link>
               </NavDropdown.Item>
               <NavDropdown.Item
-                href="#action/3.3"
+                href="#prints"
                 onSelect={() => {
                   console.log('clicked on drawings and prints');
                   props.filterByDepartment(9);
-                  props.showComponent(showArtists, false);
                 }}
               >
                 Drawings and Prints
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item
-                href="#action/3.4"
+                href="#artists"
                 onSelect={() => {
                   console.log('clicked on artists');
-                  props.showComponent(showArtists, true);
                 }}
               >
                 Artists
@@ -89,12 +79,9 @@ function Header(props) {
               onClick={() => {
                 console.log('clickety clicked');
                 props.searchForArtist();
-                props.showComponent(showSearched, true);
-                props.showComponent(showFavorites, false);
-                props.showComponent(showArtists, false);
               }}
             >
-              <i className="fas fa-search"></i>
+              {/* <i className="fas fa-search"></i> */}
             </Button>
           </Form>
         </Navbar.Collapse>
@@ -103,4 +90,4 @@ function Header(props) {
   );
 }
 
-export default Header;
+export default withRouter(Header);

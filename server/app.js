@@ -1,11 +1,13 @@
 const express = require('express');
+const cors = require('cors')
 const compression = require('compression');
 const db = require('../database');
 
 const app = express();
 
 app.use('/', express.static('dist'));
-app.use(express.json());
+app.use(express.json())
+app.use(cors());
 app.use(compression());
 
 app.get('/artworks', (req, res) => {

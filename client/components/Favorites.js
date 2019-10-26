@@ -12,7 +12,7 @@ function Favorites(props) {
     props.favorites.length
   );
   return (
-    <div>
+    <>
       <Container>
         <Row>
           <Col>
@@ -47,7 +47,7 @@ function Favorites(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }
 

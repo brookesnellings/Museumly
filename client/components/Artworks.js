@@ -12,7 +12,7 @@ function Artworks(props) {
     props.artworks.length
   );
   return (
-    <div id="wholethang">
+    <>
       <Container>
         <Row>
           <Col>
@@ -20,7 +20,6 @@ function Artworks(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
@@ -75,7 +74,6 @@ function Artworks(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
@@ -130,7 +128,6 @@ function Artworks(props) {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
-              // console.log('Garrett is the best', favoriteIDs);
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
                   <Row className="artBox">
@@ -182,7 +179,7 @@ function Artworks(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }
 
