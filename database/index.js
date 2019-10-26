@@ -15,8 +15,8 @@ connection.connect(err => {
 });
 
 const seedDB = data => {
-  connection.query(
-    `INSERT INTO artworks (artwork_id, artist, title, image, departmentID) VALUES (${data.objectID}, "${data.artistDisplayName}", "${data.title}", "${data.primaryImage}", 21)`,
+  const post = { artwork_id: data.objectID, artist: data.artistDisplayName, title: data.title, image: data.primaryImage, departmentID: '21' }
+  connection.query(`INSERT INTO artworks SET ?`, post,
     (error, results) => {
       if (error) {
         console.log('Error seeding DB :', error);
@@ -44,7 +44,7 @@ const retrieveCollections = callback => {
 };
 
 const filterByArtist = (artist, callback) => {
-  connection.query(`SELECT * FROM artworks WHERE artist="${artist}";`, (error, results) => {
+  connection.query(`SELECT * FROM artworks WHERE artist = ?`, [artist], (error, results) => {
     if (error) {
       console.log('Error searching by Artist: ', error);
       callback(error);
@@ -56,7 +56,7 @@ const filterByArtist = (artist, callback) => {
 };
 
 const filterByDept = (dept, callback) => {
-  connection.query(`SELECT * FROM artworks WHERE departmentID="${dept}";`, (error, results) => {
+  connection.query(`SELECT * FROM artworks WHERE departmentID = ?`, [dept], (error, results) => {
     if (error) {
       console.log('Error filtering by Dept: ', error);
       callback(error);
@@ -82,8 +82,9 @@ const retrieveFavorites = callback => {
   );
 };
 
-const saveFavorite = favorite => {
-  connection.query(`INSERT INTO favorites (artwork_id) VALUES (${favorite})`, (error, results) => {
+const saveFavorite = (favorite, callback) => {
+  let post = { artwork_id: favorite }
+  connection.query(`INSERT INTO favorites SET ?`, post, (error, results) => {
     if (error) {
       console.log('Error adding favorite :', error);
       callback(error);
