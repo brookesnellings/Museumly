@@ -1,7 +1,7 @@
 const axios = require('axios');
 const db = require('../database');
 
-const populatePaintingsAndSeedDB = () => {
+const storeMetPaintings = () => {
   axios
     .get('https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=21')
     .then(response => {
@@ -9,7 +9,6 @@ const populatePaintingsAndSeedDB = () => {
         axios
           .get(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${object}`)
           .then(response => {
-            // console.log(response);
             if (
               response.data.primaryImage.length > 1 &&
               response.data.title.length > 1 &&
@@ -31,4 +30,4 @@ const populatePaintingsAndSeedDB = () => {
     });
 };
 
-populatePaintingsAndSeedDB();
+storeMetPaintings();

@@ -8,21 +8,20 @@ const connection = mysql.createConnection({
 
 connection.connect(err => {
   if (err) {
-    console.log('db not connected: ', err);
+    console.log('DB not connected: ', err);
   } else {
-    console.log('db connected!');
+    console.log('DB connected!');
   }
 });
 
 const seedDB = data => {
-  console.log('this is the DATA:', data);
   connection.query(
     `INSERT INTO artworks (artwork_id, artist, title, image, departmentID) VALUES (${data.objectID}, "${data.artistDisplayName}", "${data.title}", "${data.primaryImage}", 21)`,
     (error, results) => {
       if (error) {
         console.log('Error seeding DB :', error);
       } else {
-        console.log('DB seeded!', results);
+        console.log('DB seeded!');
       }
     }
   );
@@ -44,24 +43,22 @@ const retrieveCollections = callback => {
 };
 
 const filterByArtist = (artist, callback) => {
-  console.log('this is artist: ', artist);
   connection.query(`SELECT * FROM artworks WHERE artist="${artist}";`, (error, results) => {
     if (error) {
       console.log('Error searching by Artist: ', error);
     } else {
-      console.log('Search successful!', results);
+      console.log('Search successful!');
       callback(results);
     }
   });
 };
 
 const filterByDept = (dept, callback) => {
-  console.log('this is dept: ', dept);
   connection.query(`SELECT * FROM artworks WHERE departmentID="${dept}";`, (error, results) => {
     if (error) {
       console.log('Error filtering by Dept: ', error);
     } else {
-      console.log('Filter by Dept successful!', results);
+      console.log('Filter by Dept successful!');
       callback(results);
     }
   });
@@ -96,7 +93,7 @@ const retrieveArtists = callback => {
     if (error) {
       console.log('Error retrieving Artists: ', error);
     } else {
-      console.log('Artists retrieved!', results);
+      console.log('Artists retrieved!');
       callback(results);
     }
   });

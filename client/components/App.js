@@ -26,17 +26,17 @@ class App extends React.Component {
       artists: [],
       showArtists: false
     };
+
     this.fetchArtworks = this.fetchArtworks.bind(this);
     this.fetchFavorites = this.fetchFavorites.bind(this);
-    this.updateShowFavorites = this.updateShowFavorites.bind(this);
+    this.fetchArtists = this.fetchArtists.bind(this);
+
     this.addFavorite = this.addFavorite.bind(this);
     this.captureSearchInput = this.captureSearchInput.bind(this);
     this.searchForArtist = this.searchForArtist.bind(this);
-    this.updateShowSearched = this.updateShowSearched.bind(this);
     this.filterByDepartment = this.filterByDepartment.bind(this);
-    this.updateShowFiltered = this.updateShowFiltered.bind(this);
-    this.updateShowArtists = this.updateShowArtists.bind(this);
-    this.fetchArtists = this.fetchArtists.bind(this);
+
+    this.toggleShowComponent = this.toggleShowComponent.bind(this);
   }
 
   fetchArtworks() {
@@ -44,15 +44,10 @@ class App extends React.Component {
       .get('/artworks')
       .then(response => {
         console.log('Fetching artworks: ', response.data);
-        console.log('Dank banana waffles: ', this.state.artworks);
-        this.setState(
-          {
-            artworks: response.data
-          },
-          () => {
-            console.log('inSetState:', this.state.artworks);
-          }
-        );
+        // console.log('Dank banana waffles: ', this.state.artworks);
+        this.setState({
+          artworks: response.data
+        });
       })
       .catch(error => {
         console.log('Error fetching artworks: ', error);
@@ -73,16 +68,8 @@ class App extends React.Component {
       });
   }
 
-  updateShowFavorites(boolean) {
-    this.setState({ showFavorites: boolean });
-  }
-
-  updateShowSearched(boolean) {
-    this.setState({ showSearched: boolean });
-  }
-
-  updateShowFiltered(boolean) {
-    this.setState({ showFiltered: boolean });
+  toggleShowComponent(component, boolean) {
+    this.setState({ component: boolean });
   }
 
   addFavorite(favorite) {
@@ -163,12 +150,6 @@ class App extends React.Component {
       });
   }
 
-  updateShowArtists(boolean) {
-    this.setState({
-      showArtists: boolean
-    });
-  }
-
   fetchArtists() {
     axios
       .get('/artists')
@@ -204,15 +185,12 @@ class App extends React.Component {
     return (
       <div>
         <Header
-          showFavorites={this.updateShowFavorites}
-          showSearched={this.updateShowSearched}
+          showComponent={this.toggleShowComponent}
           fetchFavorites={this.fetchFavorites}
           captureInput={this.captureSearchInput}
           searchForArtist={this.searchForArtist}
           userInput={this.state.userInput}
           filterByDepartment={this.filterByDepartment}
-          showFiltered={this.updateShowFiltered}
-          showArtists={this.updateShowArtists}
           fetchArtworks={this.fetchArtworks}
         />
         {this.state.showArtists ? (
@@ -227,21 +205,19 @@ class App extends React.Component {
           />
         ) : this.state.showFiltered ? (
           <Departments
-            showModern={this.state.showModern}
             modern={this.state.modern}
             european={this.state.european}
             drawings={this.state.drawings}
-            showDrawings={this.state.showDrawings}
             favorites={this.state.favorites}
             addFavorite={this.addFavorite}
           />
         ) : (
-          <Artworks
-            artworks={this.state.artworks}
-            addFavorite={this.addFavorite}
-            favorites={this.state.favorites}
-          />
-        )}
+                  <Artworks
+                    artworks={this.state.artworks}
+                    addFavorite={this.addFavorite}
+                    favorites={this.state.favorites}
+                  />
+                )}
       </div>
     );
   }

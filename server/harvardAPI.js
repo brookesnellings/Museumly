@@ -1,7 +1,7 @@
 const axios = require('axios');
 const db = require('../database');
 
-const getMorePaintingsPlease = () => {
+const storeHarvardPaintings = () => {
   axios
     .get(
       'https://api.harvardartmuseums.org/object?classification=Paintings&apikey=6da4cd00-b92b-11e9-8bc6-9108e1ae2170&gallery=1110|1320|1330&hasimage=1'
@@ -25,4 +25,4 @@ const getMorePaintingsPlease = () => {
     });
 };
 
-getMorePaintingsPlease();
+storeHarvardPaintings();

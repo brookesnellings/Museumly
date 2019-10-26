@@ -13,10 +13,10 @@ function Header(props) {
               href="#collections"
               onSelect={() => {
                 props.fetchArtworks();
-                props.showFavorites(false);
-                props.showSearched(false);
-                props.showFiltered(false);
-                props.showArtists(false);
+                props.showComponent(showFavorites, false);
+                props.showComponent(showSearched, false);
+                props.showComponent(showFiltered, false);
+                props.showComponent(showArtists, false);
               }}
             >
               Collections
@@ -24,10 +24,10 @@ function Header(props) {
             <Nav.Link
               href="#favorites"
               onSelect={() => {
-                props.showFavorites(true);
-                props.showSearched(false);
+                props.showComponent(showFavorites, true);
+                props.showComponent(showSearched, false);
                 props.fetchFavorites();
-                props.showArtists(false);
+                props.showComponent(showArtists, false);
               }}
             >
               Favorites
@@ -38,7 +38,7 @@ function Header(props) {
                 onSelect={() => {
                   console.log('clicked on modern art');
                   props.filterByDepartment(21);
-                  props.showArtists(false);
+                  props.showComponent(showArtists, false);
                 }}
               >
                 Modern Art
@@ -48,7 +48,7 @@ function Header(props) {
                 onSelect={() => {
                   console.log('clicked on european paintings');
                   props.filterByDepartment(11);
-                  props.showArtists(false);
+                  props.showComponent(showArtists, false);
                 }}
               >
                 European Paintings
@@ -58,7 +58,7 @@ function Header(props) {
                 onSelect={() => {
                   console.log('clicked on drawings and prints');
                   props.filterByDepartment(9);
-                  props.showArtists(false);
+                  props.showComponent(showArtists, false);
                 }}
               >
                 Drawings and Prints
@@ -68,7 +68,7 @@ function Header(props) {
                 href="#action/3.4"
                 onSelect={() => {
                   console.log('clicked on artists');
-                  props.showArtists(true);
+                  props.showComponent(showArtists, true);
                 }}
               >
                 Artists
@@ -89,9 +89,9 @@ function Header(props) {
               onClick={() => {
                 console.log('clickety clicked');
                 props.searchForArtist();
-                props.showSearched(true);
-                props.showFavorites(false);
-                props.showArtists(false);
+                props.showComponent(showSearched, true);
+                props.showComponent(showFavorites, false);
+                props.showComponent(showArtists, false);
               }}
             >
               <i className="fas fa-search"></i>

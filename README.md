@@ -2,13 +2,13 @@
 
 #### An Artwork Explorer
 
-This application allows a user to view, search, and favorite artworks.
+Museumly allows a user to view, search, and favorite artworks using the Metropolitan Museum of Art Met Collection and Harvard Art Museums APIs.
 
 #### Included technologies:
 
 - React
-- Node/Express
-- Nodemon
+- Node.js
+- Express
 - Babel
 - Webpack
 - MySQL
