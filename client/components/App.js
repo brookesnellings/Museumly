@@ -35,7 +35,12 @@ class App extends React.Component {
 
   fetchArtworks() {
     axios
-      .get('/artworks')
+      .get('/artworks', {
+        params: {
+          start: '0',
+          limit: '10'
+        }
+      })
       .then(response => {
         // console.log('Fetching artworks: ', response.data);
         this.setState({

@@ -11,7 +11,9 @@ function Header(props) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link>
-              <Link style={{ color: 'rgba(0,0,0,.5)' }} to="/">
+              <Link style={{
+                color: 'rgba(0,0,0,.5)'
+              }} to="/">
                 Artworks</Link>
             </Nav.Link>
             <Nav.Link >
