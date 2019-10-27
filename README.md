@@ -18,3 +18,5 @@ Museumly allows a user to view, search, and favorite artworks using the Metropol
 - React-Bootstrap
 
 ![](ScreenShot1.png)
+
+![](ScreenShot3.png)
