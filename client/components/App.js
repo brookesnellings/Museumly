@@ -21,7 +21,7 @@ class App extends React.Component {
       drawings: [],
       artists: [],
       userInput: '',
-      searched: [],
+      searched: []
     };
 
     this.fetchArtworks = this.fetchArtworks.bind(this);
@@ -31,13 +31,14 @@ class App extends React.Component {
     this.filterByDepartment = this.filterByDepartment.bind(this);
     this.captureSearchInput = this.captureSearchInput.bind(this);
     this.searchForArtist = this.searchForArtist.bind(this);
+    this.handleScrollArtworks = this.handleScrollArtworks.bind(this);
   }
 
-  fetchArtworks() {
+  fetchArtworks(start) {
     axios
       .get('/artworks', {
         params: {
-          start: '0',
+          start: start,
           limit: '10'
         }
       })
@@ -156,8 +157,16 @@ class App extends React.Component {
       })
   }
 
+  handleScrollArtworks(e, count) {
+    let element = e.target
+    console.log(element.scrollHeight)
+    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+      this.fetchArtworks(count);
+    }
+  }
+
   componentDidMount() {
-    this.fetchArtworks();
+    this.fetchArtworks(0);
     this.fetchFavorites();
     this.fetchArtists();
   }
@@ -180,6 +189,7 @@ class App extends React.Component {
                 artworks={this.state.artworks}
                 addFavorite={this.addFavorite}
                 favorites={this.state.favorites}
+                handleScroll={this.handleScrollArtworks}
               />
             )} />
             <Route path='/favorites' render={props => (

@@ -10,20 +10,20 @@ function Header(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link>
+            <Nav.Link as="span">
               <Link style={{
                 color: 'rgba(0,0,0,.5)'
               }} to="/">
                 Artworks</Link>
             </Nav.Link>
-            <Nav.Link >
+            <Nav.Link as="span">
               <Link style={{ color: 'rgba(0,0,0,.5)' }}
                 to="/favorites">
                 Favorites
             </Link>
             </Nav.Link>
             <NavDropdown title="Explore By" id="basic-nav-dropdown">
-              <NavDropdown.Item onSelect={() => {
+              <NavDropdown.Item as="span" onSelect={() => {
                 console.log('clicked on modern art');
                 props.filterByDepartment(21);
               }}>
@@ -32,7 +32,7 @@ function Header(props) {
                   Modern Art
                 </Link>
               </NavDropdown.Item>
-              <NavDropdown.Item onSelect={() => {
+              <NavDropdown.Item as="span" onSelect={() => {
                 console.log('clicked on european paintings');
                 props.filterByDepartment(11);
               }}> <Link style={{ color: 'black' }}
@@ -40,7 +40,7 @@ function Header(props) {
               >
                   European Paintings</Link>
               </NavDropdown.Item>
-              <NavDropdown.Item
+              <NavDropdown.Item as="span"
                 onSelect={() => {
                   console.log('clicked on drawings and prints');
                   props.filterByDepartment(9);
@@ -49,7 +49,7 @@ function Header(props) {
                   Drawings and Prints</Link>
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item
+              <NavDropdown.Item as="span"
                 onSelect={() => {
                   console.log('clicked on artists');
                 }}
