@@ -30,7 +30,7 @@ const seedDB = data => {
 const retrieveCollections = callback => {
   connection.query(
     `SELECT * FROM artworks ORDER BY RAND()
-  LIMIT 75;`,
+  LIMIT 900;`,
     (error, results) => {
       if (error) {
         console.log('Error retrieving Collections: ', error);

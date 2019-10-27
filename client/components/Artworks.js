@@ -143,7 +143,7 @@ function Artworks(props) {
                       variant="link"
                       className="searchIcon"
                       onClick={() => {
-                        console.log('I heart this!');
+                        console.log('I heart this!', artwork.artwork_id);
                         props.addFavorite(artwork.artwork_id);
                       }}
                     >
