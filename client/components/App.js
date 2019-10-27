@@ -204,7 +204,7 @@ class App extends React.Component {
             <Route path='/explore/artists' render={props => (
               <Artists {...props} artists={this.state.artists} />
             )} />
-            <Route path='/search' render={props => (
+            <Route path={`/search/${this.state.userInput}`} render={props => (
               <Searched {...props}
                 searched={this.state.searched}
                 favorites={this.state.favorites}

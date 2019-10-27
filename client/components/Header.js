@@ -70,6 +70,7 @@ function Header(props) {
               onClick={() => {
                 console.log('clickety clicked');
                 props.searchForArtist();
+                props.history.push(`/search/${props.userInput}`);
               }}
             >
               <i className="fas fa-search"></i>
