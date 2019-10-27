@@ -2,7 +2,7 @@
 
 #### An Artwork Explorer
 
-Museumly allows a user to view, search, and favorite artworks to curate their own collection using the Metropolitan Museum of Art Met Collection and Harvard Art Museums APIs. 
+Museumly allows a user to view, search, and favorite artworks to curate their own collection using the Metropolitan Museum of Art Collection and Harvard Art Museums APIs. Visually, the app has a clean, intuitive, and seamless UI/UX to best showcase the artwork and provide value to the user.
 
 ![](ScreenShot2.png)
 
@@ -18,8 +18,8 @@ Museumly allows a user to view, search, and favorite artworks to curate their ow
 - Babel
 - Webpack
 - React-Bootstrap
+- The Metropolitan Museum of Art Collection API
 - Harvard Museums API
-- The Metropolitan Museum of Art Met Collection API
 
 #### Screenshots of how the App works:
 
@@ -27,6 +27,6 @@ Users can explore collections by artist or art style/era, including Modern Art, 
 
 ![](ScreenShot1.png)
 
-Users can search for specific artworks, view list of all artists in MySQL database and click a heart to add artwork to their favorites collection.
+Users can search for specific artworks, view list of all artists in MySQL database and click a heart to designate the artwork is a favorite and add to their curated collection.
 
 ![](ScreenShot3.png)
