@@ -2,9 +2,9 @@
 
 #### An Artwork Explorer
 
-![](ScreenShot2.png)
+Museumly allows a user to view, search, and favorite artworks using the Metropolitan Museum of Art Met Collection and Harvard Art Museums APIs. Explore collection by artist or art style/era, including Modern Art, European paintings, and Drawings and Prints.
 
-Museumly allows a user to view, search, and favorite artworks using the Metropolitan Museum of Art Met Collection and Harvard Art Museums APIs.
+![](ScreenShot2.png)
 
 #### Included technologies:
 
