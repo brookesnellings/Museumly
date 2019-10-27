@@ -24,10 +24,9 @@ const seedDB = data => {
   );
 };
 
-const retrieveCollections = callback => {
+const retrieveCollections = (start, limit, callback) => {
   connection.query(
-    `SELECT * FROM artworks ORDER BY RAND()
-  LIMIT 900;`,
+    `SELECT * FROM artworks LIMIT ? OFFSET ?;`, [limit, start],
     (error, results) => {
       if (error) {
         console.log('Error retrieving Collections: ', error);
@@ -41,7 +40,7 @@ const retrieveCollections = callback => {
 };
 
 const filterByArtist = (artist, callback) => {
-  connection.query(`SELECT * FROM artworks WHERE artist = ?`, [artist], (error, results) => {
+  connection.query(`SELECT * FROM artworks WHERE artist = ? LIMIT 30`, [artist], (error, results) => {
     if (error) {
       console.log('Error searching by Artist: ', error);
       callback(error);
@@ -52,8 +51,8 @@ const filterByArtist = (artist, callback) => {
   });
 };
 
-const filterByDept = (dept, callback) => {
-  connection.query(`SELECT * FROM artworks WHERE departmentID = ?`, [dept], (error, results) => {
+const filterByDept = (dept, start, limit, callback) => {
+  connection.query(`SELECT * FROM artworks WHERE departmentID = ? LIMIT ? OFFSET ?`, [dept, limit, start], (error, results) => {
     if (error) {
       console.log('Error filtering by Dept: ', error);
       callback(error);
@@ -64,9 +63,9 @@ const filterByDept = (dept, callback) => {
   });
 };
 
-const retrieveFavorites = callback => {
+const retrieveFavorites = (start, limit, callback) => {
   connection.query(
-    `SELECT * FROM artworks JOIN favorites WHERE (favorites.artwork_id=artworks.artwork_id);`,
+    `SELECT * FROM artworks JOIN favorites WHERE favorites.artwork_id=artworks.artwork_id LIMIT ? OFFSET ?;`, [limit, start],
     (error, results) => {
       if (error) {
         console.log('Error retrieving Favorites: ', error);
