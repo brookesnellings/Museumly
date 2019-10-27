@@ -12,6 +12,7 @@ Visually, the app has a clean, intuitive, and seamless UI/UX to best showcase th
 
 - React
 - React-Router
+- React-Hooks
 - JavaScript
 - Node.js
 - Express
