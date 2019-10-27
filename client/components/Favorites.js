@@ -17,7 +17,7 @@ function Favorites(props) {
         <Row>
           <Col>
             {favorites1.map(artwork => (
-              <Row className="artBox">
+              <Row className="artBox" key={Math.random()}>
                 <Image src={artwork.image} fluid />
                 <Button variant="link" className="searchIcon">
                   <i className="fas fa-heart"></i>
@@ -27,7 +27,7 @@ function Favorites(props) {
           </Col>
           <Col>
             {favorites2.map(artwork => (
-              <Row className="artBox">
+              <Row className="artBox" key={Math.random()}>
                 <Image src={artwork.image} fluid />
                 <Button variant="link" className="searchIcon">
                   <i className="fas fa-heart"></i>
@@ -37,7 +37,7 @@ function Favorites(props) {
           </Col>
           <Col>
             {favorites3.map(artwork => (
-              <Row className="artBox">
+              <Row className="artBox" key={Math.random()}>
                 <Image src={artwork.image} fluid />
                 <Button variant="link" className="searchIcon">
                   <i className="fas fa-heart"></i>

@@ -26,10 +26,9 @@ function Artworks(props) {
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
-                      key={artwork.artwork_id}
-                      src={artwork.image}
+                      key={artwork.artwork_id} src={artwork.image}
                       onClick={() => {
                         console.log('clicked!', artwork.artwork_id);
                       }}
@@ -49,10 +48,9 @@ function Artworks(props) {
                 );
               } else {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
-                      key={artwork.artwork_id}
-                      src={artwork.image}
+                      key={artwork.artwork_id} src={artwork.image}
                       onClick={() => {
                         console.log('clicked!', artwork.artwork_id);
                       }}
@@ -80,10 +78,9 @@ function Artworks(props) {
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
-                      key={artwork.artwork_id}
-                      src={artwork.image}
+                      key={artwork.artwork_id} src={artwork.image}
                       onClick={() => {
                         console.log('clicked!', artwork.artwork_id);
                       }}
@@ -103,10 +100,9 @@ function Artworks(props) {
                 );
               } else {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
-                      key={artwork.artwork_id}
-                      src={artwork.image}
+                      key={artwork.artwork_id} src={artwork.image}
                       onClick={() => {
                         console.log('clicked!', artwork.artwork_id);
                       }}
@@ -134,10 +130,9 @@ function Artworks(props) {
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
-                      key={artwork.artwork_id}
-                      src={artwork.image}
+                      key={artwork.artwork_id} src={artwork.image}
                       onClick={() => {
                         console.log('clicked!', artwork.artwork_id);
                       }}
@@ -157,10 +152,9 @@ function Artworks(props) {
                 );
               } else {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
-                      key={artwork.artwork_id}
-                      src={artwork.image}
+                      key={artwork.artwork_id} src={artwork.image}
                       onClick={() => {
                         console.log('clicked!', artwork.artwork_id);
                       }}
