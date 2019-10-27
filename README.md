@@ -29,6 +29,6 @@ Users can explore collections by artist or art style/era, including Modern Art, 
 
 ![](ScreenShot1.png)
 
-Users can search for specific artworks, view list of all artists in MySQL database, and click a heart to designate the artwork is a favorite and add to their curated collection.
+Users can search for specific artworks, view list of all artists in MySQL database, and click a heart to denote the artwork a favorite and add to their curated collection.
 
 ![](ScreenShot3.png)
