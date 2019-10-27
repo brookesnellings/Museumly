@@ -11,7 +11,7 @@ app.use(cors());
 app.use(compression());
 
 app.get('/artworks', (req, res) => {
-  console.log(req.query)
+  // console.log(req.query)
   let startNum;
   let limitNum;
   if (req.query.start === '' || req.query.limit === '') {

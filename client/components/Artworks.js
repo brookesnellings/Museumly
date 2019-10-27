@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 function Artworks(props) {
-  const [count, setCount] = useState(10)
   const artworks1 = props.artworks.slice(0, Math.ceil(props.artworks.length / 3));
   const artworks2 = props.artworks.slice(
     Math.ceil(props.artworks.length / 3),
@@ -14,10 +13,7 @@ function Artworks(props) {
   );
   return (
     <div>
-      <Container onScroll={(e) => {
-        setCount(count + 10);
-        props.handleScroll(e, count)
-      }}>
+      <Container>
         <Row>
           <Col>
             {artworks1.map(artwork => {
