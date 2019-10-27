@@ -6,7 +6,7 @@ Museumly allows a user to view, search, and favorite artworks using the Metropol
 
 ![](ScreenShot2.png)
 
-#### Included technologies:
+#### Tech Stack:
 
 - React
 - React-Router
@@ -16,6 +16,5 @@ Museumly allows a user to view, search, and favorite artworks using the Metropol
 - Babel
 - Webpack
 - React-Bootstrap
-- Prettier/ESLint (using the AirBnb style guide)
 
 ![](ScreenShot1.png)
