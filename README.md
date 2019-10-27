@@ -2,7 +2,9 @@
 
 #### An Artwork Explorer
 
-Museumly allows a user to view, search, and favorite artworks to curate their own collection using the Metropolitan Museum of Art Collection and Harvard Art Museums APIs. Visually, the app has a clean, intuitive, and seamless UI/UX to best showcase the artwork and provide value to the user.
+Museumly allows a user to view, search, and favorite artworks to curate their own collection using the Metropolitan Museum of Art Collection and Harvard Art Museums APIs. 
+
+Visually, the app has a clean, intuitive, and seamless UI/UX to best showcase the artwork and provide value to the user.
 
 ![](ScreenShot2.png)
 
