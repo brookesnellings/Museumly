@@ -37,7 +37,7 @@ class App extends React.Component {
     axios
       .get('/artworks')
       .then(response => {
-        console.log('Fetching artworks: ', response.data);
+        // console.log('Fetching artworks: ', response.data);
         this.setState({
           artworks: response.data
         });
@@ -73,7 +73,7 @@ class App extends React.Component {
     axios
       .get('/favorites')
       .then(response => {
-        console.log('Fetching favorites: ', response.data);
+        // console.log('Fetching favorites: ', response.data);
         this.setState({
           favorites: response.data
         });

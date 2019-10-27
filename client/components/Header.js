@@ -10,23 +10,16 @@ function Header(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Link
-              to="/">
-              <Nav.Link
-                onSelect={() => {
-                  props.fetchArtworks();
-                }}
-              >
-                Artworks
-              </Nav.Link>
+            <Nav.Link>
+              <Link style={{ color: 'rgba(0,0,0,.5)' }} to="/">
+                Artworks</Link>
+            </Nav.Link>
+            <Nav.Link >
+              <Link style={{ color: 'rgba(0,0,0,.5)' }}
+                to="/favorites">
+                Favorites
             </Link>
-            <Link
-              to="/favorites"
-            > <Nav.Link onSelect={() => {
-              props.fetchFavorites();
-            }}>
-                Favorites</Nav.Link>
-            </Link>
+            </Nav.Link>
             <NavDropdown title="Explore By" id="basic-nav-dropdown">
               <NavDropdown.Item onSelect={() => {
                 console.log('clicked on modern art');
