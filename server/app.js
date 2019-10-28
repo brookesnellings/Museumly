@@ -22,7 +22,7 @@ app.get('/artworks', (req, res) => {
     startNum = parseInt(req.query.start);
     limitNum = parseInt(req.query.limit);
   }
-  console.log('startNum', startNum)
+  // console.log('startNum', startNum)
   db.retrieveCollections(startNum, limitNum, (err, response) => {
     if (err) {
       res.sendStatus(400);

@@ -31,7 +31,7 @@ class App extends React.Component {
     this.filterByDepartment = this.filterByDepartment.bind(this);
     this.captureSearchInput = this.captureSearchInput.bind(this);
     this.searchForArtist = this.searchForArtist.bind(this);
-    // this.handleScrollArtworks = this.handleScrollArtworks.bind(this);
+    this.handleScrollArtworks = this.handleScrollArtworks.bind(this);
   }
 
   fetchArtworks(start) {
@@ -45,7 +45,7 @@ class App extends React.Component {
       .then(response => {
         console.log('Fetching artworks: ', response.data);
         this.setState({
-          artworks: response.data
+          artworks: [...this.state.artworks, ...response.data]
         });
       })
       .catch(error => {
@@ -157,13 +157,14 @@ class App extends React.Component {
       })
   }
 
-  // handleScrollArtworks(event, count) {
-  //   console.log('scrolling!')
-  //   let element = event.target;
-  //   if (window.innerHeight + window.scrollY === element.clientHeight + element.offsetTop) {
-  //     this.fetchArtworks(count);
-  //   }
-  // }
+  handleScrollArtworks(count) {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    }
+    console.log('Fetch more list items!', count);
+    return this.fetchArtworks(count);
+  }
+
 
   componentDidMount() {
     this.fetchArtworks(0);
@@ -189,7 +190,7 @@ class App extends React.Component {
                 artworks={this.state.artworks}
                 addFavorite={this.addFavorite}
                 favorites={this.state.favorites}
-              // handleScroll={this.handleScrollArtworks}
+                handleScroll={this.handleScrollArtworks}
               />
             )} />
             <Route path='/favorites' render={props => (
