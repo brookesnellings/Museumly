@@ -121,7 +121,7 @@ class App extends React.Component {
   }
 
   filterByDepartment(dept, start) {
-    console.log('Filtering by dept: ', dept);
+    // console.log('Filtering by dept: ', dept);
     axios
       .get('/department', {
         params: {
@@ -179,7 +179,7 @@ class App extends React.Component {
       return;
     } else {
       this.setState({ artPageCount: this.state.artPageCount + 10 })
-      console.log('Fetch more list items!', this.state.artPageCount);
+      // console.log('Fetch more list items!', this.state.artPageCount);
     }
     return this.fetchArtworks(this.state.artPageCount);
   }
@@ -190,7 +190,7 @@ class App extends React.Component {
       return;
     } else {
       this.setState({ favePageCount: this.state.favePageCount + 10 })
-      console.log('Fetch more list items!', this.state.favePageCount);
+      // console.log('Fetch more list items!', this.state.favePageCount);
     }
     return this.fetchFavorites(this.state.favePageCount);
   }
@@ -201,7 +201,7 @@ class App extends React.Component {
       return;
     } else {
       this.setState({ euroPageCount: this.state.euroPageCount + 10 })
-      console.log('Fetch more list items!', this.state.euroPageCount);
+      // console.log('Fetch more list items!', this.state.euroPageCount);
     }
     return this.filterByDepartment(11, this.state.euroPageCount);
   }
@@ -211,7 +211,7 @@ class App extends React.Component {
       return;
     } else {
       this.setState({ modernPageCount: this.state.modernPageCount + 10 })
-      console.log('Fetch more list items!', this.state.modernPageCount);
+      // console.log('Fetch more list items!', this.state.modernPageCount);
     }
     return this.filterByDepartment(21, this.state.modernPageCount);
   }
@@ -221,7 +221,7 @@ class App extends React.Component {
       return;
     } else {
       this.setState({ printPageCount: this.state.printPageCount + 10 })
-      console.log('Fetch more list items!', this.state.printPageCount);
+      // console.log('Fetch more list items!', this.state.printPageCount);
     }
     return this.filterByDepartment(9, this.state.printPageCount);
   }

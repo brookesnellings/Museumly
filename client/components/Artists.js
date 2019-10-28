@@ -13,7 +13,7 @@ function Artists(props) {
         <tbody>
           {props.artists.map(artist => {
             return (
-              <tr>
+              <tr key={Math.random()}>
                 <td>{artist}</td>
               </tr>
             );
