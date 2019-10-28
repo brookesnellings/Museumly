@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 function Searched(props) {
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      props.handleScroll()
+    });
+    return () => window.removeEventListener('scroll', () => { props.handleScroll() });
+  }, []);
+
   const searched1 = props.searched.slice(0, Math.ceil(props.searched.length / 3));
   const searched2 = props.searched.slice(
     Math.ceil(props.searched.length / 3),

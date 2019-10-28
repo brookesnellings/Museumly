@@ -23,7 +23,11 @@ class App extends React.Component {
       userInput: '',
       searched: [],
       artPageCount: 0,
-      favePageCount: 0
+      favePageCount: 0,
+      euroPageCount: 0,
+      modernPageCount: 0,
+      printPageCount: 0,
+      searchPageCount: 0
     };
 
     this.fetchArtworks = this.fetchArtworks.bind(this);
@@ -33,8 +37,17 @@ class App extends React.Component {
     this.filterByDepartment = this.filterByDepartment.bind(this);
     this.captureSearchInput = this.captureSearchInput.bind(this);
     this.searchForArtist = this.searchForArtist.bind(this);
+    // Handle scrolling functions for lazy-loading/infinite scroll
     this.handleScrollArtworks = this.handleScrollArtworks.bind(this);
     this.handleScrollFavorites = this.handleScrollFavorites.bind(this);
+    this.handleScrollEuropean = this.handleScrollEuropean.bind(this);
+    this.handleScrollModern = this.handleScrollModern.bind(this);
+    this.handleScrollPrints = this.handleScrollPrints.bind(this);
+    // this.handleScrollSearched = this.handleScrollSearched.bind(this);
+
+
+
+
 
   }
 
@@ -114,27 +127,29 @@ class App extends React.Component {
       });
   }
 
-  filterByDepartment(dept) {
+  filterByDepartment(dept, start) {
     console.log('Filtering by dept: ', dept);
     axios
       .get('/department', {
         params: {
-          department: dept
+          department: dept,
+          start: start,
+          limit: '10'
         }
       })
       .then(response => {
         let period;
         if (dept === 11) {
           this.setState({
-            european: response.data
+            european: [...this.state.european, ...response.data]
           });
         } else if (dept === 21) {
           this.setState({
-            modern: response.data
+            modern: [...this.state.modern, ...response.data]
           });
         } else {
           this.setState({
-            drawings: response.data
+            drawings: [...this.state.drawings, ...response.data]
           });
         }
       })
@@ -187,6 +202,42 @@ class App extends React.Component {
     return this.fetchFavorites(this.state.favePageCount);
   }
 
+
+  handleScrollEuropean() {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    } else {
+      this.setState({ euroPageCount: this.state.euroPageCount + 10 })
+      console.log('Fetch more list items!', this.state.euroPageCount);
+    }
+    return this.filterByDepartment(11, this.state.euroPageCount);
+  }
+
+  handleScrollModern() {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    } else {
+      this.setState({ modernPageCount: this.state.modernPageCount + 10 })
+      console.log('Fetch more list items!', this.state.modernPageCount);
+    }
+    return this.filterByDepartment(21, this.state.modernPageCount);
+  }
+
+  handleScrollPrints() {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    } else {
+      this.setState({ printPageCount: this.state.printPageCount + 10 })
+      console.log('Fetch more list items!', this.state.printPageCount);
+    }
+    return this.filterByDepartment(9, this.state.printPageCount);
+  }
+
+  // handleScrollSearched() {
+  //   // searchPageCount: 0
+
+  // }
+
   componentDidMount() {
     this.fetchArtworks(this.state.artPageCount);
     this.fetchFavorites(this.state.favePageCount);
@@ -204,6 +255,9 @@ class App extends React.Component {
             captureInput={this.captureSearchInput}
             userInput={this.state.userInput}
             searchForArtist={this.searchForArtist}
+            euroCount={this.state.euroPageCount}
+            modernCount={this.state.modernPageCount}
+            printCount={this.state.printPageCount}
           />
           <Switch>
             <Route path='/' exact render={props => (
@@ -222,6 +276,7 @@ class App extends React.Component {
                 modern={this.state.modern}
                 favorites={this.state.favorites}
                 addFavorite={this.addFavorite}
+                handleScroll={this.handleScrollModern}
               />
             )} />
             <Route path='/explore/european' render={props => (
@@ -229,6 +284,7 @@ class App extends React.Component {
                 european={this.state.european}
                 favorites={this.state.favorites}
                 addFavorite={this.addFavorite}
+                handleScroll={this.handleScrollEuropean}
               />
             )} />
             <Route path='/explore/prints' render={props => (
@@ -236,6 +292,7 @@ class App extends React.Component {
                 drawings={this.state.drawings}
                 favorites={this.state.favorites}
                 addFavorite={this.addFavorite}
+                handleScroll={this.handleScrollPrints}
               />
             )} />
             <Route path='/explore/artists' render={props => (

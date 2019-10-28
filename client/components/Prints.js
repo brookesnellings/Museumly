@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 function Prints(props) {
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            props.handleScroll()
+        });
+        return () => window.removeEventListener('scroll', () => { props.handleScroll() });
+    }, []);
+
     const department = props.drawings;
     const department1 = department.slice(0, Math.ceil(department.length / 3));
     const department2 = department.slice(
@@ -20,7 +27,7 @@ function Prints(props) {
                             });
                             if (favoriteIDs.includes(artwork.artwork_id)) {
                                 return (
-                                    <Row className="artBox">
+                                    <Row className="artBox" key={Math.random()}>
                                         <Image
                                             key={artwork.artwork_id}
                                             src={artwork.image}
@@ -43,7 +50,7 @@ function Prints(props) {
                                 );
                             } else {
                                 return (
-                                    <Row className="artBox">
+                                    <Row className="artBox" key={Math.random()}>
                                         <Image
                                             key={artwork.artwork_id}
                                             src={artwork.image}
@@ -74,7 +81,7 @@ function Prints(props) {
                             });
                             if (favoriteIDs.includes(artwork.artwork_id)) {
                                 return (
-                                    <Row className="artBox">
+                                    <Row className="artBox" key={Math.random()}>
                                         <Image
                                             key={artwork.artwork_id}
                                             src={artwork.image}
@@ -97,7 +104,7 @@ function Prints(props) {
                                 );
                             } else {
                                 return (
-                                    <Row className="artBox">
+                                    <Row className="artBox" key={Math.random()}>
                                         <Image
                                             key={artwork.artwork_id}
                                             src={artwork.image}
@@ -128,7 +135,7 @@ function Prints(props) {
                             });
                             if (favoriteIDs.includes(artwork.artwork_id)) {
                                 return (
-                                    <Row className="artBox">
+                                    <Row className="artBox" key={Math.random()}>
                                         <Image
                                             key={artwork.artwork_id}
                                             src={artwork.image}
@@ -151,7 +158,7 @@ function Prints(props) {
                                 );
                             } else {
                                 return (
-                                    <Row className="artBox">
+                                    <Row className="artBox" key={Math.random()}>
                                         <Image
                                             key={artwork.artwork_id}
                                             src={artwork.image}
