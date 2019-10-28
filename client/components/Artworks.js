@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 function Artworks(props) {
-  const [count, setCount] = useState(10);
-  // setCount(count + 10)
-
   useEffect(() => {
-    window.addEventListener('scroll', () => { props.handleScroll(count) });
-    return () => window.removeEventListener('scroll', () => { props.handleScroll(count) });
+    window.addEventListener('scroll', () => {
+      props.handleScroll(10)
+    });
+    return () => window.removeEventListener('scroll', () => { props.handleScroll(10) });
   }, []);
+
 
   const artworks1 = props.artworks.slice(0, Math.ceil(props.artworks.length / 3));
   const artworks2 = props.artworks.slice(

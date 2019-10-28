@@ -21,7 +21,8 @@ class App extends React.Component {
       drawings: [],
       artists: [],
       userInput: '',
-      searched: []
+      searched: [],
+      artPageCount: 0
     };
 
     this.fetchArtworks = this.fetchArtworks.bind(this);
@@ -157,17 +158,19 @@ class App extends React.Component {
       })
   }
 
-  handleScrollArtworks(count) {
+  handleScrollArtworks() {
     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
       return;
+    } else {
+      this.setState({ artPageCount: this.state.artPageCount + 10 })
+      console.log('Fetch more list items!', this.state.artPageCount);
     }
-    console.log('Fetch more list items!', count);
-    return this.fetchArtworks(count);
+    return this.fetchArtworks(this.state.artPageCount);
   }
 
 
   componentDidMount() {
-    this.fetchArtworks(0);
+    this.fetchArtworks(this.state.artPageCount);
     this.fetchFavorites();
     this.fetchArtists();
   }
