@@ -26,8 +26,7 @@ class App extends React.Component {
       favePageCount: 0,
       euroPageCount: 0,
       modernPageCount: 0,
-      printPageCount: 0,
-      searchPageCount: 0
+      printPageCount: 0
     };
 
     this.fetchArtworks = this.fetchArtworks.bind(this);
@@ -43,12 +42,6 @@ class App extends React.Component {
     this.handleScrollEuropean = this.handleScrollEuropean.bind(this);
     this.handleScrollModern = this.handleScrollModern.bind(this);
     this.handleScrollPrints = this.handleScrollPrints.bind(this);
-    // this.handleScrollSearched = this.handleScrollSearched.bind(this);
-
-
-
-
-
   }
 
   fetchArtworks(start) {
@@ -164,7 +157,7 @@ class App extends React.Component {
     });
   }
 
-  searchForArtist() {
+  searchForArtist(start) {
     axios
       .get('/search', {
         params: {
@@ -175,6 +168,11 @@ class App extends React.Component {
         this.setState({
           searched: response.data
         });
+      })
+      .then(() => {
+        this.setState({
+          userInput: ""
+        })
       })
       .catch(error => {
         console.log(error);
@@ -232,11 +230,6 @@ class App extends React.Component {
     }
     return this.filterByDepartment(9, this.state.printPageCount);
   }
-
-  // handleScrollSearched() {
-  //   // searchPageCount: 0
-
-  // }
 
   componentDidMount() {
     this.fetchArtworks(this.state.artPageCount);

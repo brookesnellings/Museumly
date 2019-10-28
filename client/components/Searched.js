@@ -1,14 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 function Searched(props) {
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      props.handleScroll()
-    });
-    return () => window.removeEventListener('scroll', () => { props.handleScroll() });
-  }, []);
-
   const searched1 = props.searched.slice(0, Math.ceil(props.searched.length / 3));
   const searched2 = props.searched.slice(
     Math.ceil(props.searched.length / 3),
@@ -29,7 +22,7 @@ function Searched(props) {
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -52,7 +45,7 @@ function Searched(props) {
                 );
               } else {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -83,7 +76,7 @@ function Searched(props) {
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -106,7 +99,7 @@ function Searched(props) {
                 );
               } else {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -137,7 +130,7 @@ function Searched(props) {
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -160,7 +153,7 @@ function Searched(props) {
                 );
               } else {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
