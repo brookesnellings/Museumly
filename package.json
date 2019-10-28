@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "start": "node server/index.js",
     "server-dev": "nodemon server",
     "webpack-dev": "webpack --mode=development --watch",
     "webpack-build": "webpack --mode=production"
@@ -52,5 +53,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/brookesnellings/Museumly"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
