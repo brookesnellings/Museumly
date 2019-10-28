@@ -53,7 +53,7 @@ class App extends React.Component {
         }
       })
       .then(response => {
-        console.log('Fetching artworks: ', response.data);
+        // console.log('Fetching artworks: ', response.data);
         this.setState({
           artworks: [...this.state.artworks, ...response.data]
         });
@@ -168,11 +168,6 @@ class App extends React.Component {
         this.setState({
           searched: response.data
         });
-      })
-      .then(() => {
-        this.setState({
-          userInput: ""
-        })
       })
       .catch(error => {
         console.log(error);
