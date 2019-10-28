@@ -22,7 +22,7 @@ function Searched(props) {
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -45,7 +45,7 @@ function Searched(props) {
                 );
               } else {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -76,7 +76,7 @@ function Searched(props) {
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -99,7 +99,7 @@ function Searched(props) {
                 );
               } else {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -130,7 +130,7 @@ function Searched(props) {
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}
@@ -153,7 +153,7 @@ function Searched(props) {
                 );
               } else {
                 return (
-                  <Row className="artBox">
+                  <Row className="artBox" key={Math.random()}>
                     <Image
                       key={artwork.artwork_id}
                       src={artwork.image}

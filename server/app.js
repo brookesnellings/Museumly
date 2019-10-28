@@ -11,7 +11,7 @@ app.use(cors());
 app.use(compression());
 
 app.get('/artworks', (req, res) => {
-  console.log(req.query)
+  // console.log(req.query)
   let startNum;
   let limitNum;
   if (req.query.start === '' || req.query.limit === '') {
@@ -22,7 +22,7 @@ app.get('/artworks', (req, res) => {
     startNum = parseInt(req.query.start);
     limitNum = parseInt(req.query.limit);
   }
-  console.log('startNum', startNum)
+  // console.log('startNum', startNum)
   db.retrieveCollections(startNum, limitNum, (err, response) => {
     if (err) {
       res.sendStatus(400);
@@ -33,7 +33,19 @@ app.get('/artworks', (req, res) => {
 });
 
 app.get('/favorites', (req, res) => {
-  db.retrieveFavorites(0, 10, (err, response) => {
+  console.log('favorites')
+  let startNum;
+  let limitNum;
+  if (req.query.start === '' || req.query.limit === '') {
+    startNum = 0;
+    limitNum = 10;
+  }
+  else {
+    startNum = parseInt(req.query.start);
+    limitNum = parseInt(req.query.limit);
+  }
+  console.log('hey', startNum, limitNum)
+  db.retrieveFavorites(startNum, limitNum, (err, response) => {
     if (err) {
       res.sendStatus(400);
     } else {
@@ -63,7 +75,17 @@ app.get('/search', (req, res) => {
 });
 
 app.get('/department', (req, res) => {
-  db.filterByDept(req.query.department, 0, 10, (err, response) => {
+  let startNum;
+  let limitNum;
+  if (req.query.start === '' || req.query.limit === '') {
+    startNum = 0;
+    limitNum = 10;
+  }
+  else {
+    startNum = parseInt(req.query.start);
+    limitNum = parseInt(req.query.limit);
+  }
+  db.filterByDept(req.query.department, startNum, limitNum, (err, response) => {
     if (err) {
       res.sendStatus(400);
     } else {

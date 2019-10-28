@@ -21,7 +21,12 @@ class App extends React.Component {
       drawings: [],
       artists: [],
       userInput: '',
-      searched: []
+      searched: [],
+      artPageCount: 0,
+      favePageCount: 0,
+      euroPageCount: 0,
+      modernPageCount: 0,
+      printPageCount: 0
     };
 
     this.fetchArtworks = this.fetchArtworks.bind(this);
@@ -31,7 +36,12 @@ class App extends React.Component {
     this.filterByDepartment = this.filterByDepartment.bind(this);
     this.captureSearchInput = this.captureSearchInput.bind(this);
     this.searchForArtist = this.searchForArtist.bind(this);
+    // Handle scrolling functions for lazy-loading/infinite scroll
     this.handleScrollArtworks = this.handleScrollArtworks.bind(this);
+    this.handleScrollFavorites = this.handleScrollFavorites.bind(this);
+    this.handleScrollEuropean = this.handleScrollEuropean.bind(this);
+    this.handleScrollModern = this.handleScrollModern.bind(this);
+    this.handleScrollPrints = this.handleScrollPrints.bind(this);
   }
 
   fetchArtworks(start) {
@@ -45,7 +55,7 @@ class App extends React.Component {
       .then(response => {
         // console.log('Fetching artworks: ', response.data);
         this.setState({
-          artworks: response.data
+          artworks: [...this.state.artworks, ...response.data]
         });
       })
       .catch(error => {
@@ -75,13 +85,18 @@ class App extends React.Component {
       });
   }
 
-  fetchFavorites() {
+  fetchFavorites(start) {
     axios
-      .get('/favorites')
+      .get('/favorites', {
+        params: {
+          start: start,
+          limit: '10'
+        }
+      })
       .then(response => {
         // console.log('Fetching favorites: ', response.data);
         this.setState({
-          favorites: response.data
+          favorites: [...this.state.favorites, ...response.data]
         });
       })
       .catch(error => {
@@ -101,31 +116,33 @@ class App extends React.Component {
         console.log(error);
       })
       .finally(() => {
-        this.fetchFavorites();
+        this.fetchFavorites(this.state.favePageCount);
       });
   }
 
-  filterByDepartment(dept) {
-    console.log('Filtering by dept: ', dept);
+  filterByDepartment(dept, start) {
+    // console.log('Filtering by dept: ', dept);
     axios
       .get('/department', {
         params: {
-          department: dept
+          department: dept,
+          start: start,
+          limit: '10'
         }
       })
       .then(response => {
         let period;
         if (dept === 11) {
           this.setState({
-            european: response.data
+            european: [...this.state.european, ...response.data]
           });
         } else if (dept === 21) {
           this.setState({
-            modern: response.data
+            modern: [...this.state.modern, ...response.data]
           });
         } else {
           this.setState({
-            drawings: response.data
+            drawings: [...this.state.drawings, ...response.data]
           });
         }
       })
@@ -140,7 +157,7 @@ class App extends React.Component {
     });
   }
 
-  searchForArtist() {
+  searchForArtist(start) {
     axios
       .get('/search', {
         params: {
@@ -157,17 +174,61 @@ class App extends React.Component {
       })
   }
 
-  handleScrollArtworks(e, count) {
-    let element = e.target
-    console.log(element.scrollHeight)
-    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-      this.fetchArtworks(count);
+  handleScrollArtworks() {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    } else {
+      this.setState({ artPageCount: this.state.artPageCount + 10 })
+      // console.log('Fetch more list items!', this.state.artPageCount);
     }
+    return this.fetchArtworks(this.state.artPageCount);
+  }
+
+
+  handleScrollFavorites() {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    } else {
+      this.setState({ favePageCount: this.state.favePageCount + 10 })
+      // console.log('Fetch more list items!', this.state.favePageCount);
+    }
+    return this.fetchFavorites(this.state.favePageCount);
+  }
+
+
+  handleScrollEuropean() {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    } else {
+      this.setState({ euroPageCount: this.state.euroPageCount + 10 })
+      // console.log('Fetch more list items!', this.state.euroPageCount);
+    }
+    return this.filterByDepartment(11, this.state.euroPageCount);
+  }
+
+  handleScrollModern() {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    } else {
+      this.setState({ modernPageCount: this.state.modernPageCount + 10 })
+      // console.log('Fetch more list items!', this.state.modernPageCount);
+    }
+    return this.filterByDepartment(21, this.state.modernPageCount);
+  }
+
+  handleScrollPrints() {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    } else {
+      this.setState({ printPageCount: this.state.printPageCount + 10 })
+      // console.log('Fetch more list items!', this.state.printPageCount);
+    }
+    return this.filterByDepartment(9, this.state.printPageCount);
   }
 
   componentDidMount() {
-    this.fetchArtworks(0);
-    this.fetchFavorites();
+    this.fetchArtworks(this.state.artPageCount);
+    this.fetchFavorites(this.state.favePageCount);
     this.fetchArtists();
   }
 
@@ -182,6 +243,9 @@ class App extends React.Component {
             captureInput={this.captureSearchInput}
             userInput={this.state.userInput}
             searchForArtist={this.searchForArtist}
+            euroCount={this.state.euroPageCount}
+            modernCount={this.state.modernPageCount}
+            printCount={this.state.printPageCount}
           />
           <Switch>
             <Route path='/' exact render={props => (
@@ -193,13 +257,14 @@ class App extends React.Component {
               />
             )} />
             <Route path='/favorites' render={props => (
-              <Favorites {...props} favorites={this.state.favorites} />
+              <Favorites {...props} favorites={this.state.favorites} handleScroll={this.handleScrollFavorites} />
             )} />
             <Route path='/explore/modern' render={props => (
               <Modern {...props}
                 modern={this.state.modern}
                 favorites={this.state.favorites}
                 addFavorite={this.addFavorite}
+                handleScroll={this.handleScrollModern}
               />
             )} />
             <Route path='/explore/european' render={props => (
@@ -207,6 +272,7 @@ class App extends React.Component {
                 european={this.state.european}
                 favorites={this.state.favorites}
                 addFavorite={this.addFavorite}
+                handleScroll={this.handleScrollEuropean}
               />
             )} />
             <Route path='/explore/prints' render={props => (
@@ -214,6 +280,7 @@ class App extends React.Component {
                 drawings={this.state.drawings}
                 favorites={this.state.favorites}
                 addFavorite={this.addFavorite}
+                handleScroll={this.handleScrollPrints}
               />
             )} />
             <Route path='/explore/artists' render={props => (

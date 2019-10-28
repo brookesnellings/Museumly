@@ -25,7 +25,7 @@ function Header(props) {
             <NavDropdown title="Explore By" id="basic-nav-dropdown">
               <NavDropdown.Item as="span" onSelect={() => {
                 console.log('clicked on modern art');
-                props.filterByDepartment(21);
+                props.filterByDepartment(21, props.modernCount);
               }}>
                 <Link style={{ color: 'black' }} to="/explore/modern"
                 >
@@ -34,7 +34,7 @@ function Header(props) {
               </NavDropdown.Item>
               <NavDropdown.Item as="span" onSelect={() => {
                 console.log('clicked on european paintings');
-                props.filterByDepartment(11);
+                props.filterByDepartment(11, props.euroCount);
               }}> <Link style={{ color: 'black' }}
                 to="/explore/european"
               >
@@ -43,7 +43,7 @@ function Header(props) {
               <NavDropdown.Item as="span"
                 onSelect={() => {
                   console.log('clicked on drawings and prints');
-                  props.filterByDepartment(9);
+                  props.filterByDepartment(9, props.printCount);
                 }}
               > <Link style={{ color: 'black' }} to="/explore/prints">
                   Drawings and Prints</Link>

@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 function Artworks(props) {
-  const [count, setCount] = useState(10)
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      props.handleScroll()
+    });
+    return () => window.removeEventListener('scroll', () => { props.handleScroll() });
+  }, []);
+
+
   const artworks1 = props.artworks.slice(0, Math.ceil(props.artworks.length / 3));
   const artworks2 = props.artworks.slice(
     Math.ceil(props.artworks.length / 3),
@@ -14,19 +21,16 @@ function Artworks(props) {
   );
   return (
     <div>
-      <Container onScroll={(e) => {
-        setCount(count + 10);
-        props.handleScroll(e, count)
-      }}>
-        <Row>
-          <Col>
+      <Container>
+        <Row >
+          <Col >
             {artworks1.map(artwork => {
               let favoriteIDs = props.favorites.map(favorite => {
                 return favorite.artwork_id;
               });
               if (favoriteIDs.includes(artwork.artwork_id)) {
                 return (
-                  <Row className="artBox" key={Math.random()}>
+                  <Row className="artBox" key={Math.random()} >
                     <Image
                       key={artwork.artwork_id} src={artwork.image}
                       onClick={() => {
