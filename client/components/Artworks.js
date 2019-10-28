@@ -4,9 +4,9 @@ import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 function Artworks(props) {
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      props.handleScroll(10)
+      props.handleScroll()
     });
-    return () => window.removeEventListener('scroll', () => { props.handleScroll(10) });
+    return () => window.removeEventListener('scroll', () => { props.handleScroll() });
   }, []);
 
 

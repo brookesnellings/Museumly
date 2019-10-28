@@ -33,7 +33,17 @@ app.get('/artworks', (req, res) => {
 });
 
 app.get('/favorites', (req, res) => {
-  db.retrieveFavorites(0, 10, (err, response) => {
+  let startNum;
+  let limitNum;
+  if (req.query.start === '' || req.query.limit === '') {
+    startNum = 0;
+    limitNum = 10;
+  }
+  else {
+    startNum = parseInt(req.query.start);
+    limitNum = parseInt(req.query.limit);
+  }
+  db.retrieveFavorites(startNum, limitNum, (err, response) => {
     if (err) {
       res.sendStatus(400);
     } else {

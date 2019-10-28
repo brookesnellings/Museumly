@@ -22,7 +22,8 @@ class App extends React.Component {
       artists: [],
       userInput: '',
       searched: [],
-      artPageCount: 0
+      artPageCount: 0,
+      favePageCount: 0
     };
 
     this.fetchArtworks = this.fetchArtworks.bind(this);
@@ -33,6 +34,8 @@ class App extends React.Component {
     this.captureSearchInput = this.captureSearchInput.bind(this);
     this.searchForArtist = this.searchForArtist.bind(this);
     this.handleScrollArtworks = this.handleScrollArtworks.bind(this);
+    this.handleScrollFavorites = this.handleScrollFavorites.bind(this);
+
   }
 
   fetchArtworks(start) {
@@ -76,13 +79,18 @@ class App extends React.Component {
       });
   }
 
-  fetchFavorites() {
+  fetchFavorites(start) {
     axios
-      .get('/favorites')
+      .get('/favorites', {
+        params: {
+          start: start,
+          limit: '10'
+        }
+      })
       .then(response => {
         // console.log('Fetching favorites: ', response.data);
         this.setState({
-          favorites: response.data
+          favorites: [...this.state.favorites, ...response.data]
         });
       })
       .catch(error => {
@@ -102,7 +110,7 @@ class App extends React.Component {
         console.log(error);
       })
       .finally(() => {
-        this.fetchFavorites();
+        this.fetchFavorites(this.state.favePageCount);
       });
   }
 
@@ -169,9 +177,19 @@ class App extends React.Component {
   }
 
 
+  handleScrollFavorites() {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+      return;
+    } else {
+      this.setState({ favePageCount: this.state.favePageCount + 10 })
+      console.log('Fetch more list items!', this.state.favePageCount);
+    }
+    return this.fetchFavorites(this.state.favePageCount);
+  }
+
   componentDidMount() {
     this.fetchArtworks(this.state.artPageCount);
-    this.fetchFavorites();
+    this.fetchFavorites(this.state.favePageCount);
     this.fetchArtists();
   }
 
@@ -197,7 +215,7 @@ class App extends React.Component {
               />
             )} />
             <Route path='/favorites' render={props => (
-              <Favorites {...props} favorites={this.state.favorites} />
+              <Favorites {...props} favorites={this.state.favorites} handleScroll={this.handleScrollFavorites} />
             )} />
             <Route path='/explore/modern' render={props => (
               <Modern {...props}

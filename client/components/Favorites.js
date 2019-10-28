@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 function Favorites(props) {
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      props.handleScroll()
+    });
+    return () => window.removeEventListener('scroll', () => { props.handleScroll() });
+  }, []);
+
   const favorites1 = props.favorites.slice(0, Math.ceil(props.favorites.length / 3));
   const favorites2 = props.favorites.slice(
     Math.ceil(props.favorites.length / 3),

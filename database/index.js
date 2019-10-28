@@ -65,7 +65,7 @@ const filterByDept = (dept, start, limit, callback) => {
 
 const retrieveFavorites = (start, limit, callback) => {
   connection.query(
-    `SELECT * FROM artworks JOIN favorites WHERE favorites.artwork_id=artworks.artwork_id LIMIT ? OFFSET ?;`, [limit, start],
+    `SELECT * FROM artworks JOIN favorites WHERE (favorites.artwork_id=artworks.artwork_id) LIMIT ? OFFSET ?`, [limit, start],
     (error, results) => {
       if (error) {
         console.log('Error retrieving Favorites: ', error);
