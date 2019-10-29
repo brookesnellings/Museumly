@@ -40,7 +40,6 @@ function European(props) {
                                             variant="link"
                                             className="searchIcon"
                                             onClick={() => {
-                                                console.log('I heart this!');
                                                 props.addFavorite(artwork.artwork_id);
                                             }}
                                         >
@@ -63,7 +62,6 @@ function European(props) {
                                             variant="link"
                                             className="searchIcon"
                                             onClick={() => {
-                                                console.log('I heart this!');
                                                 props.addFavorite(artwork.artwork_id);
                                             }}
                                         >
@@ -94,7 +92,6 @@ function European(props) {
                                             variant="link"
                                             className="searchIcon"
                                             onClick={() => {
-                                                console.log('I heart this!');
                                                 props.addFavorite(artwork.artwork_id);
                                             }}
                                         >
@@ -117,7 +114,6 @@ function European(props) {
                                             variant="link"
                                             className="searchIcon"
                                             onClick={() => {
-                                                console.log('I heart this!');
                                                 props.addFavorite(artwork.artwork_id);
                                             }}
                                         >
@@ -148,7 +144,6 @@ function European(props) {
                                             variant="link"
                                             className="searchIcon"
                                             onClick={() => {
-                                                console.log('I heart this!');
                                                 props.addFavorite(artwork.artwork_id);
                                             }}
                                         >
@@ -171,7 +166,6 @@ function European(props) {
                                             variant="link"
                                             className="searchIcon"
                                             onClick={() => {
-                                                console.log('I heart this!');
                                                 props.addFavorite(artwork.artwork_id);
                                             }}
                                         >
