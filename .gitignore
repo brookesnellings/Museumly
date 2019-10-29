@@ -3,7 +3,7 @@ npm-debug.log
 .DS_Store
 /*.env
 config.js
-
+dist/bundle.js
 # Logs
 logs
 *.log
