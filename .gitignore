@@ -2,6 +2,8 @@
 npm-debug.log
 /*.env
 
+config.js
+
 # Logs
 logs
 *.log
