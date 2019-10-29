@@ -1,7 +1,11 @@
 const mysql = require('mysql');
-const config = require('../config.js');
 
-const connection = mysql.createConnection(config.DBCONFIG);
+const connection = mysql.createConnection({
+  host: 'us-cdbr-iron-east-05.cleardb.net',
+  user: 'b4338dc1d54d47',
+  password: '661ea943',
+  database: 'heroku_06b8576f8e3594a'
+});
 
 connection.connect(err => {
   if (err) {
