@@ -12,6 +12,9 @@
   },
   "author": "Brooke Snellings",
   "license": "ISC",
+  "engines": {
+    "node": "10.x"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
@@ -53,8 +56,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/brookesnellings/Museumly"
-  },
-  "engines": {
-    "node": "10.x"
   }
 }
