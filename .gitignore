@@ -1,7 +1,7 @@
 /node_modules
 npm-debug.log
+.DS_Store
 /*.env
-
 config.js
 
 # Logs
@@ -92,5 +92,3 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
-
-.DS_Store
