@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node server/index.js",
+    "start": "node server",
     "server-dev": "nodemon server",
     "webpack-dev": "webpack --mode=development --watch",
     "webpack-build": "webpack --mode=production"
