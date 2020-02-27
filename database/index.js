@@ -1,5 +1,9 @@
 const mysql = require('mysql');
 
+// for local development:
+// const config = require('../config')
+// const connection = mysql.createConnection(config.DBCONFIG)
+
 let connection;
 
 function handleDisconnect() {
@@ -125,6 +129,18 @@ const retrieveArtists = callback => {
     }
   });
 };
+
+const deleteArtwork = id => {
+  connection.query(`DELETE FROM artworks WHERE artwork_id=${id};`, (error, results) => {
+    if (error) {
+      console.log('Error deleting artwork: ', error);
+    } else {
+      console.log('Artwork deleted!');
+    }
+  });
+};
+
+// deleteArtwork('681021');
 
 module.exports = {
   seedDB,
