@@ -140,7 +140,7 @@ const deleteArtwork = id => {
   });
 };
 
-// deleteArtwork('681021');
+// deleteArtwork('483459');
 
 module.exports = {
   seedDB,
